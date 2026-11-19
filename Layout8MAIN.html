@@ -1,290 +1,243 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land Degradation in India</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-        }
-
-        #map-container {
-            width: 70%;
-            height: 100%;
-            position: relative;
-        }
-
-        #map {
-            height: 100%;
-            width: 100%;
-        }
-
-        #info-container {
-            width: 30%;
-            height: 100%;
-            background-color: #f9f9f9;
-            border-left: 2px solid #ccc;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.5s ease;
-        }
-
-        #info-container.active {
-            transform: translateX(0);
-        }
-
-        header {
-            text-align: center;
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            z-index: 1000;
-        }
-
-        #search-box {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        #info-container h2 {
-            margin-top: 0;
-        }
-
-        #info h3 {
-            margin: 0;
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .pointer {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .pointer-animate {
-            background-color: yellow;
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-
-        .highlighted {
-            fill: rgba(255, 0, 0, 0.5) !important;
-            stroke: red !important;
-            stroke-width: 3 !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive India Map - Land Degradation Intelligence</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'><path d='M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z'/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #0f172a;
+      color: #f8fafc;
+      overflow: hidden;
+    }
+    header {
+      height: 60px;
+      background-color: #14532d;
+      border-bottom: 1px solid #166534;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+    }
+    nav a {
+      color: #bbf7d0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 150ms;
+    }
+    nav a:hover, nav a.active {
+      color: #ffffff;
+    }
+    #map-wrapper {
+      flex: 1;
+      display: flex;
+      position: relative;
+    }
+    #map {
+      flex: 1;
+      height: 100%;
+    }
+    #sidebar-panel {
+      width: 380px;
+      height: 100%;
+      background-color: #1e293b;
+      border-left: 1px solid #334155;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .search-box {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 999;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 8px 14px;
+      width: 280px;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .stat-pill {
+      background-color: #0f172a;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+    .stat-val { font-size: 1.4rem; font-weight: 800; color: #4ade80; }
+    .stat-lbl { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; }
+  </style>
 </head>
 <body>
-    <div id="map-container">
-        <header class="bg-green-600 text-white p-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Land Degradation in India</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="Layout8MAIN.html" class="hover:text-gray-300">Home</a></li>
-                    <li><a href="knowledge.html" class="hover:text-gray-300">Learn</a></li>
-                    <li><a href="quiz.html" class="hover:text-gray-300">Test your knowledge</a></li>
-                </ul>
-            </nav>
-        </header>
-        <input type="text" id="search-box" placeholder="Search for a state..." class="mt-16 p-2 border rounded w-full">
-        <div id="map"></div>
+
+  <header>
+    <div class="brand">
+      <i class="fas fa-seedling" style="color:#4ade80;"></i>
+      <span>BhuDegradation GIS Explorer</span>
     </div>
-    
-    <div id="info-container">
-        <h2>Region Information</h2>
-        <div id="info">
-            <p>Select a state on the map or search to learn more about land degradation and prevention methods.</p>
+    <nav>
+      <ul>
+        <li><a href="index.html#overview"><i class="fas fa-tachometer-alt"></i> Full Dashboard</a></li>
+        <li><a href="Layout8MAIN.html" class="active"><i class="fas fa-map"></i> Map Explorer</a></li>
+        <li><a href="knowledge.html"><i class="fas fa-book-reader"></i> Knowledge Base</a></li>
+        <li><a href="quiz.html"><i class="fas fa-graduation-cap"></i> Environmental Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="map-wrapper">
+    <input type="text" id="state-search-input" class="search-box" placeholder="Search state (e.g. Rajasthan, Punjab)...">
+    <div id="map"></div>
+
+    <aside id="sidebar-panel">
+      <h2 id="panel-state-name" style="font-size:1.5rem; font-weight:800; color:#fff;">Select a State</h2>
+      <p id="panel-state-sub" style="font-size:0.85rem; color:#94a3b8;">Click on any genuine state boundary polygon on the map or type in search.</p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px;">
+        <div class="stat-pill">
+          <div class="stat-val" id="panel-total-area">-</div>
+          <div class="stat-lbl">Total Area (Mha)</div>
         </div>
-    </div>
+        <div class="stat-pill">
+          <div class="stat-val" id="panel-degraded-area" style="color:#f87171;">-</div>
+          <div class="stat-lbl">Degraded Area (Mha)</div>
+        </div>
+        <div class="stat-pill" style="grid-column: span 2;">
+          <div class="stat-val" id="panel-degraded-pct" style="color:#fbbf24;">-</div>
+          <div class="stat-lbl">% of Geographical Area Degraded</div>
+        </div>
+      </div>
 
-    <div id="pointer" class="pointer"></div>
+      <div style="margin-top: 10px;">
+        <h4 style="font-size:0.9rem; font-weight:700; color:#cbd5e1; margin-bottom:6px;">Major Degradation Processes</h4>
+        <div id="panel-processes" style="font-size:0.85rem; color:#94a3b8; line-height:1.5;">Click a state to inspect processes.</div>
+      </div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        // Example data for all states in India, including degradation and prevention methods
-        var states = [
-            {name: "Andhra Pradesh", lat: 15.9129, lng: 79.7400, degradation: "Soil erosion due to deforestation and agriculture.", prevention: "Promote afforestation, terrace farming, and sustainable agricultural practices."},
-            {name: "Arunachal Pradesh", lat: 28.2180, lng: 94.7278, degradation: "Shifting cultivation leading to loss of forest cover.", prevention: "Encourage sustainable farming practices and reforestation."},
-            {name: "Assam", lat: 26.2006, lng: 92.9376, degradation: "Flooding and soil erosion.", prevention: "Implement flood management strategies and afforestation."},
-            {name: "Bihar", lat: 25.0961, lng: 85.3131, degradation: "Waterlogging and soil salinization.", prevention: "Improve drainage systems and promote salt-tolerant crops."},
-            {name: "Chhattisgarh", lat: 21.2787, lng: 81.8661, degradation: "Deforestation and mining leading to soil erosion.", prevention: "Enforce stricter mining regulations and promote afforestation."},
-            {name: "Goa", lat: 15.2993, lng: 74.1240, degradation: "Coastal erosion and sand mining.", prevention: "Regulate sand mining and protect coastal areas with vegetation."},
-            {name: "Gujarat", lat: 22.2587, lng: 71.1924, degradation: "Salinization and desertification in arid regions.", prevention: "Implement water management strategies and afforestation."},
-            {name: "Haryana", lat: 29.0588, lng: 76.0856, degradation: "Over-irrigation leading to soil salinity.", prevention: "Promote water-efficient irrigation and crop diversification."},
-            {name: "Himachal Pradesh", lat: 31.1048, lng: 77.1734, degradation: "Landslides and deforestation.", prevention: "Implement reforestation and proper land-use planning."},
-            {name: "Jharkhand", lat: 23.6102, lng: 85.2799, degradation: "Mining-induced soil erosion.", prevention: "Enforce sustainable mining practices and promote reforestation."},
-            {name: "Karnataka", lat: 15.3173, lng: 75.7139, degradation: "Soil erosion due to overgrazing and deforestation.", prevention: "Promote sustainable grazing practices and afforestation."},
-            {name: "Kerala", lat: 10.8505, lng: 76.2711, degradation: "Coastal erosion and land-use change.", prevention: "Implement coastal protection measures and sustainable land-use planning."},
-            {name: "Madhya Pradesh", lat: 22.9734, lng: 78.6569, degradation: "Deforestation leading to soil erosion.", prevention: "Encourage reforestation and sustainable agriculture."},
-            {name: "Maharashtra", lat: 19.7515, lng: 75.7139, degradation: "Soil degradation due to overuse of chemical fertilizers.", prevention: "Promote organic farming and soil conservation practices."},
-            {name: "Manipur", lat: 24.6637, lng: 93.9063, degradation: "Shifting cultivation causing deforestation.", prevention: "Encourage sustainable agricultural practices and reforestation."},
-            {name: "Meghalaya", lat: 25.4670, lng: 91.3662, degradation: "Mining-induced soil degradation.", prevention: "Implement stricter mining regulations and promote reforestation."},
-            {name: "Mizoram", lat: 23.1645, lng: 92.9376, degradation: "Shifting cultivation leading to deforestation.", prevention: "Promote sustainable farming and afforestation."},
-            {name: "Nagaland", lat: 26.1584, lng: 94.5624, degradation: "Shifting cultivation and deforestation.", prevention: "Encourage sustainable agricultural practices and reforestation."},
-            {name: "Odisha", lat: 20.9517, lng: 85.0985, degradation: "Soil erosion and deforestation.", prevention: "Promote afforestation and sustainable land management."},
-            {name: "Punjab", lat: 31.1471, lng: 75.3412, degradation: "Soil salinity due to over-irrigation.", prevention: "Implement water-efficient irrigation and promote crop diversification."},
-            {name: "Rajasthan", lat: 27.0238, lng: 74.2179, degradation: "Desertification and sand dunes.", prevention: "Implement afforestation, manage water resources efficiently, and prevent overgrazing."},
-            {name: "Sikkim", lat: 27.5330, lng: 88.5122, degradation: "Landslides and deforestation.", prevention: "Promote reforestation and proper land-use planning."},
-            {name: "Tamil Nadu", lat: 11.1271, lng: 78.6569, degradation: "Soil erosion and land degradation due to agriculture.", prevention: "Implement sustainable farming practices and soil conservation methods."},
-            {name: "Telangana", lat: 18.1124, lng: 79.0193, degradation: "Soil erosion due to deforestation.", prevention: "Promote afforestation and sustainable agriculture."},
-            {name: "Tripura", lat: 23.9408, lng: 91.9882, degradation: "Shifting cultivation leading to deforestation.", prevention: "Encourage sustainable farming practices and reforestation."},
-            {name: "Uttar Pradesh", lat: 26.8467, lng: 80.9462, degradation: "Waterlogging and soil salinity.", prevention: "Improve drainage systems and promote crop diversification."},
-            {name: "Uttarakhand", lat: 30.0668, lng: 79.0193, degradation: "Landslides and deforestation.", prevention: "Promote reforestation and proper land-use planning."},
-            {name: "West Bengal", lat: 22.9868, lng: 87.8550, degradation: "Coastal erosion and soil degradation.", prevention: "Implement coastal protection measures and promote sustainable land use."},
-            {name: "Andaman and Nicobar Islands", lat: 11.7401, lng: 92.6586, degradation: "Coastal erosion and land degradation.", prevention: "Protect coastal areas and promote sustainable land use."},
-            {name: "Chandigarh", lat: 30.7333, lng: 76.7794, degradation: "Urbanization leading to soil sealing.", prevention: "Promote green spaces and sustainable urban planning."},
-            {name: "Dadra and Nagar Haveli and Daman and Diu", lat: 20.4283, lng: 72.8397, degradation: "Coastal erosion and land degradation.", prevention: "Protect coastal areas and promote afforestation."},
-            {name: "Lakshadweep", lat: 10.5667, lng: 72.6417, degradation: "Coral reef degradation and coastal erosion.", prevention: "Protect coral reefs and promote sustainable fishing practices."},
-            {name: "Delhi", lat: 28.7041, lng: 77.1025, degradation: "Urbanization leading to loss of green cover.", prevention: "Promote green spaces and sustainable urban planning."},
-            {name: "Puducherry", lat: 11.9416, lng: 79.8083, degradation: "Coastal erosion and land degradation.", prevention: "Protect coastal areas and promote sustainable land use."},
-            {name: "Ladakh", lat: 34.1526, lng: 77.5770, degradation: "Desertification and soil erosion.", prevention: "Implement afforestation and sustainable water management."},
-            {name: "Jammu and Kashmir", lat: 33.7782, lng: 76.5762, degradation: "Soil erosion and deforestation.", prevention: "Promote reforestation and sustainable land-use practices."}
-        ];
+      <div>
+        <h4 style="font-size:0.9rem; font-weight:700; color:#cbd5e1; margin-bottom:6px;">Recommended Prevention Measures</h4>
+        <p id="panel-prevention" style="font-size:0.85rem; color:#94a3b8; line-height:1.5;">Select a state to view solutions.</p>
+      </div>
 
-        // Initialize the map and set its view to India's coordinates
-        var map = L.map('map').setView([20.5937, 78.9629], 5);
+      <div style="margin-top:auto; padding-top:14px; border-top:1px solid #334155; font-size:0.75rem; color:#64748b;">
+        Data Source: Space Applications Centre (SAC), ISRO Desertification Atlas 2021.
+      </div>
+    </aside>
+  </div>
 
-        // Load and display tile layers on the map (from OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    let map = L.map('map', { center: [22.8, 82.5], zoom: 4.8 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; CARTO &copy; OpenStreetMap | Data: ISRO SAC',
+      maxZoom: 18
+    }).addTo(map);
 
-        // Create a GeoJSON layer to display state boundaries
-        var geojsonLayer = L.geoJSON(states, {
-            style: function(feature) {
-                return {
-                    color: 'blue',
-                    weight: 2,
-                    opacity: 1,
-                    fillOpacity: 0.2
-                };
-            },
-            onEachFeature: function(feature, layer) {
-                layer.on({
-                    click: function(e) {
-                        displayStateInfo(feature.properties);
-                        highlightState(layer);
-                    }
-                });
-            }
-        }).addTo(map);
+    let geojsonLayer;
+    let statesMeta = [];
 
-        // Create a div element for the location pointer
-        var pointer = L.divIcon({
-            className: 'pointer'
-        });
-        var pointerMarker = L.marker([0, 0], {icon: pointer}).addTo(map);
+    // Load data
+    Promise.all([
+      fetch('states_data.json').then(r => r.json()),
+      fetch('india_states.geojson').then(r => r.json())
+    ]).then(([states, geojson]) => {
+      statesMeta = states;
 
-        // Function to display state information in the info panel
-        function displayStateInfo(state) {
-            var infoContainer = document.getElementById('info-container');
-            var infoDiv = document.getElementById('info');
-            infoDiv.innerHTML = `
-                <h3>${state.name}</h3>
-                <p><strong>Degradation:</strong> ${state.degradation}</p>
-                <p><strong>Prevention:</strong> ${state.prevention}</p>
-            `;
+      geojsonLayer = L.geoJSON(geojson, {
+        style: function(feat) {
+          let s = statesMeta.find(sm => sm.name.toLowerCase() === feat.properties.name.toLowerCase());
+          let pct = s ? s.degraded_pct : 25;
+          let color = '#10b981';
+          if (pct >= 60) color = '#b91c1c';
+          else if (pct >= 45) color = '#ef4444';
+          else if (pct >= 30) color = '#f97316';
+          else if (pct >= 15) color = '#f59e0b';
 
-            // Show the info panel with animation
-            infoContainer.classList.add('active');
+          return {
+            fillColor: color,
+            weight: 1.5,
+            opacity: 1,
+            color: '#ffffff',
+            fillOpacity: 0.75
+          };
+        },
+        onEachFeature: function(feat, layer) {
+          let s = statesMeta.find(sm => sm.name.toLowerCase() === feat.properties.name.toLowerCase());
+          let name = s ? s.name : feat.properties.name;
+          let pct = s ? s.degraded_pct + '%' : 'N/A';
+
+          layer.bindTooltip(`<strong>${name}</strong>: ${pct} degraded`, { sticky: true });
+
+          layer.on('mouseover', function(e) {
+            e.target.setStyle({ weight: 3, color: '#0f172a', fillOpacity: 0.95 });
+            e.target.bringToFront();
+          });
+          layer.on('mouseout', function(e) {
+            geojsonLayer.resetStyle(e.target);
+          });
+          layer.on('click', function(e) {
+            map.fitBounds(e.target.getBounds(), { padding: [40, 40], maxZoom: 7 });
+            if (s) displayState(s);
+          });
         }
+      }).addTo(map);
 
-        // Function to highlight the selected state
-        function highlightState(layer) {
-            geojsonLayer.eachLayer(function(l) {
-                l.setStyle({
-                    fillColor: 'blue',
-                    weight: 2,
-                    opacity: 1,
-                    fillOpacity: 0.2
-                });
-            });
-            layer.setStyle({
-                fillColor: 'red',
-                weight: 3,
-                opacity: 1,
-                fillOpacity: 0.5
-            });
-        }
-
-        // Add click event listener to the map for state selection
-        map.on('click', function(e) {
-            var clickedLatLng = e.latlng;
-
-            // Find the nearest state to the clicked point (basic approximation)
-            var nearestState = states.reduce((prev, curr) => {
-                var prevDist = Math.sqrt(Math.pow(prev.lat - clickedLatLng.lat, 2) + Math.pow(prev.lng - clickedLatLng.lng, 2));
-                var currDist = Math.sqrt(Math.pow(curr.lat - clickedLatLng.lat, 2) + Math.pow(curr.lng - clickedLatLng.lng, 2));
-                return (currDist < prevDist) ? curr : prev;
-            });
-
-            displayStateInfo(nearestState);
-            map.setView([nearestState.lat, nearestState.lng], 6, {animate: true, duration: 1.5});
-            pointerMarker.setLatLng([nearestState.lat, nearestState.lng]);
-            pointerMarker._icon.classList.add('pointer-animate');
-            setTimeout(() => {
-                pointerMarker._icon.classList.remove('pointer-animate');
-            }, 1000);
+      // Search
+      document.getElementById('state-search-input').addEventListener('input', function(e) {
+        let q = e.target.value.toLowerCase().trim();
+        if (!q) return;
+        geojsonLayer.eachLayer(function(l) {
+          if (l.feature.properties.name.toLowerCase().includes(q)) {
+            map.fitBounds(l.getBounds(), { padding: [40, 40], maxZoom: 7 });
+            let s = statesMeta.find(sm => sm.name.toLowerCase() === l.feature.properties.name.toLowerCase());
+            if (s) displayState(s);
+          }
         });
+      });
+    });
 
-        // Implement search functionality
-        document.getElementById('search-box').addEventListener('input', function(e) {
-            var query = e.target.value.toLowerCase();
-            var foundState = states.find(state => state.name.toLowerCase().includes(query));
+    function displayState(state) {
+      document.getElementById('panel-state-name').textContent = state.name;
+      document.getElementById('panel-state-sub').textContent = `${state.region} • Capital: ${state.capital} • ${state.severity} Severity`;
+      document.getElementById('panel-total-area').textContent = state.total_area_mha;
+      document.getElementById('panel-degraded-area').textContent = state.degraded_area_mha;
+      document.getElementById('panel-degraded-pct').textContent = state.degraded_pct + '%';
+      
+      document.getElementById('panel-processes').innerHTML = state.dominant_processes.map(p => `
+        <div>• <strong>${p.type}:</strong> ${p.pct}% (${p.area_mha} Mha)</div>
+      `).join('');
 
-            if (foundState) {
-                map.setView([foundState.lat, foundState.lng], 6, {animate: true, duration: 1.5});
-                displayStateInfo(foundState);
-                pointerMarker.setLatLng([foundState.lat, foundState.lng]);
-                pointerMarker._icon.classList.add('pointer-animate');
-                setTimeout(() => {
-                    pointerMarker._icon.classList.remove('pointer-animate');
-                }, 1000);
-                // Highlight the state
-                geojsonLayer.eachLayer(function(layer) {
-                    if (layer.feature.properties.name === foundState.name) {
-                        highlightState(layer);
-                    } else {
-                        layer.setStyle({
-                            fillColor: 'blue',
-                            weight: 2,
-                            opacity: 1,
-                            fillOpacity: 0.2
-                        });
-                    }
-                });
-            }
-        });
-    </script>
+      document.getElementById('panel-prevention').textContent = state.prevention_measures;
+    }
+  </script>
 </body>
 </html>

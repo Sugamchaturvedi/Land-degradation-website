@@ -1,68 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction - Land Degradation in India</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('https://wallpapercave.com/wp/wp7946676.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #00796b;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            border: 2px solid #004d40;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.7); /* Increased transparency */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-top: 0;
-            font-size: 2.5em;
-            color: #004d40;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: #ffffff;
-            background-color: #00796b;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #004d40;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Land Degradation Intelligence Platform (India)</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'><path d='M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z'/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #052e16 0%, #14532d 50%, #064e3b 100%);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .background-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .portal-card {
+      background-color: rgba(18, 30, 36, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 820px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 10;
+      animation: scaleIn 300ms ease forwards;
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background-color: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    p {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+    .feature-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .feature-box i {
+      color: #4ade80;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .feature-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .feature-box p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 200ms ease;
+    }
+    .btn-primary {
+      background-color: #22c55e;
+      color: #052e16;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.35);
+    }
+    .btn-primary:hover {
+      background-color: #4ade80;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .portal-card {
+        padding: 32px 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Land Degradation in India Portal</h1>
-        <p>Explore the impact of land degradation across various states in India. Our interactive map provides detailed information on land types, reasons for degradation, and effective prevention methods.</p>
-        <p>Discover how different regions are affected and what measures can be taken to combat these environmental challenges.</p>
-        <a href="Layout8MAIN.html" class="button">Enter the Map</a>
+  <div class="background-pattern"></div>
+
+  <div class="portal-card">
+    <div class="badge">
+      <i class="fas fa-satellite"></i> ISRO SAC Verified Geospatial Intelligence
     </div>
+
+    <h1>Land Degradation & Environmental Monitoring Platform</h1>
+    <p>
+      Explore satellite-verified environmental analytics, interactive state-by-state boundary mapping, and scientifically backed restoration frameworks for all 36 Indian States and Union Territories.
+    </p>
+
+    <div class="features-grid">
+      <div class="feature-box">
+        <i class="fas fa-map-marked-alt"></i>
+        <h4>Interactive GIS Map</h4>
+        <p>Accurate state polygon boundaries with choropleth severity filters.</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-chart-line"></i>
+        <h4>Three-Cycle Analytics</h4>
+        <p>Multi-temporal satellite trends from 2003-05 to 2018-19.</p>
+      </div>
+      <div class="feature-box">
+        <i class="fas fa-graduation-cap"></i>
+        <h4>55-Question Assessment</h4>
+        <p>Comprehensive environmental assessment with scientific explanations.</p>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <a href="index.html#overview" class="btn btn-primary">
+        <i class="fas fa-tachometer-alt"></i> Enter Main Dashboard
+      </a>
+      <a href="index.html#map" class="btn btn-outline">
+        <i class="fas fa-map"></i> Open Interactive Map
+      </a>
+      <a href="index.html#quiz" class="btn btn-outline">
+        <i class="fas fa-brain"></i> Take Quiz
+      </a>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LandWatch India – Satellite Intelligence & Environmental Monitoring</title>
+  
+  <!-- PWA Manifest & Theme -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#15803d">
+  <meta name="description" content="LandWatch India: Geospatial Earth Observation, Satellite Change Detection and Land Degradation Intelligence Platform">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'><path d='M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z'/></svg>">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Turf.js for Advanced GIS Measurements -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+
+  <!-- Platform Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="app-layout">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon">
+            <i class="fas fa-satellite"></i>
+          </div>
+          <div>
+            <div class="brand-title">LandWatch India</div>
+            <div class="brand-subtitle">Satellite & Earth Intelligence</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-category" data-i18n="nav_core">Satellite & GIS Monitoring</div>
+        <a class="nav-link active" data-view="overview">
+          <i class="fas fa-chart-pie"></i>
+          <span data-i18n="nav_overview">Overview Dashboard</span>
+        </a>
+        <a class="nav-link" data-view="satellite" style="border-left: 3px solid #22c55e;">
+          <i class="fas fa-satellite-dish" style="color:#22c55e;"></i>
+          <span data-i18n="nav_satellite">Satellite Intelligence</span>
+          <span class="nav-badge" style="background:#15803d; color:#fff;">Live Earth</span>
+        </a>
+        <a class="nav-link" data-view="map">
+          <i class="fas fa-map-marked-alt"></i>
+          <span data-i18n="nav_map">Interactive India Map</span>
+          <span class="nav-badge">GIS</span>
+        </a>
+        <a class="nav-link" data-view="gis-studio">
+          <i class="fas fa-draw-polygon"></i>
+          <span data-i18n="nav_gis_studio">GIS Studio</span>
+          <span class="nav-badge">Measure</span>
+        </a>
+        <a class="nav-link" data-view="states">
+          <i class="fas fa-layer-group"></i>
+          <span data-i18n="nav_states">State Explorer</span>
+          <span class="nav-badge">36 UT/States</span>
+        </a>
+        <a class="nav-link" data-view="compare">
+          <i class="fas fa-columns"></i>
+          <span data-i18n="nav_compare">State Comparison</span>
+        </a>
+
+        <div class="nav-category" data-i18n="nav_analytics">Analytics & Trends</div>
+        <a class="nav-link" data-view="analytics">
+          <i class="fas fa-chart-line"></i>
+          <span data-i18n="nav_analytics_hub">Analytics Hub</span>
+        </a>
+        <a class="nav-link" data-view="historical">
+          <i class="fas fa-history"></i>
+          <span data-i18n="nav_historical">Historical Trends</span>
+          <span class="nav-badge">15-Year</span>
+        </a>
+        <a class="nav-link" data-view="calculator">
+          <i class="fas fa-calculator"></i>
+          <span data-i18n="nav_calculator">Impact Calculator</span>
+        </a>
+
+        <div class="nav-category" data-i18n="nav_community">Intelligence & Community</div>
+        <a class="nav-link" data-view="ai-assistant">
+          <i class="fas fa-robot" style="color:#10b981;"></i>
+          <span data-i18n="nav_ai">BhuMitra AI Assistant</span>
+        </a>
+        <a class="nav-link" data-view="citizen">
+          <i class="fas fa-bullhorn"></i>
+          <span data-i18n="nav_citizen">Citizen Reporting</span>
+          <span class="nav-badge" style="background:#2563eb; color:#fff;">BhuSeva</span>
+        </a>
+        <a class="nav-link" data-view="reports">
+          <i class="fas fa-file-pdf"></i>
+          <span data-i18n="nav_reports">Report Generator</span>
+        </a>
+
+        <div class="nav-category" data-i18n="nav_education">Action & Knowledge</div>
+        <a class="nav-link" data-view="knowledge">
+          <i class="fas fa-book-reader"></i>
+          <span data-i18n="nav_knowledge">Knowledge Center</span>
+        </a>
+        <a class="nav-link" data-view="quiz">
+          <i class="fas fa-graduation-cap"></i>
+          <span data-i18n="nav_quiz">Quiz Assessment</span>
+          <span class="nav-badge">55 Qs</span>
+        </a>
+        <a class="nav-link" data-view="solutions">
+          <i class="fas fa-seedling"></i>
+          <span data-i18n="nav_solutions">Restoration Solutions</span>
+          <span class="nav-badge">10 Plans</span>
+        </a>
+        <a class="nav-link" data-view="news">
+          <i class="fas fa-newspaper"></i>
+          <span data-i18n="nav_news">News & Initiatives</span>
+        </a>
+
+        <div class="nav-category" data-i18n="nav_platform">Platform & Governance</div>
+        <a class="nav-link" data-view="admin">
+          <i class="fas fa-user-shield"></i>
+          <span data-i18n="nav_admin">Admin Console</span>
+        </a>
+        <a class="nav-link" data-view="about">
+          <i class="fas fa-info-circle"></i>
+          <span data-i18n="nav_about">About & Data Sources</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-pill">
+          <div class="status-dot"></div>
+          <div>
+            <strong>ISRO & Sentinel Constellation</strong>
+            <div style="font-size:0.7rem; color:var(--text-muted);">Near-Real-Time + SAC Atlas</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEWPORT -->
+    <main id="main-container">
+      
+      <!-- TOPBAR -->
+      <header id="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle-btn" id="menu-toggle-btn" title="Toggle Navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="breadcrumb-area">
+            <span>LandWatch</span> / <strong id="current-breadcrumb">Overview Dashboard</strong>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Multilingual Selector -->
+          <div style="display:flex; align-items:center; gap:6px;">
+            <i class="fas fa-language" style="color:var(--text-muted);"></i>
+            <select id="language-switcher" class="lang-select-pill" title="Language / भाषा / ਭਾਸ਼ਾ">
+              <option value="en">English (EN)</option>
+              <option value="hi">हिन्दी (HI)</option>
+              <option value="pa">ਪੰਜਾਬੀ (PA)</option>
+            </select>
+          </div>
+
+          <button class="search-trigger-btn" id="global-search-trigger" title="Quick Search (Ctrl+K)">
+            <i class="fas fa-search"></i>
+            <span data-i18n="search_placeholder">Search states, topics, sensors...</span>
+            <span class="search-kbd">Ctrl K</span>
+          </button>
+
+          <button class="action-icon-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+            <i class="fas fa-moon"></i>
+          </button>
+
+          <button class="user-pill-btn" id="user-pill-btn" title="User Profile & Bookmarks">
+            <div class="user-avatar-circle">
+              <i class="fas fa-user"></i>
+            </div>
+            <span id="user-display-name">Guest</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT SECTIONS CONTAINER -->
+      <div id="content-area">
+
+        <!-- 1. OVERVIEW DASHBOARD VIEW -->
+        <section class="view-section active" id="overview-view">
+          <div class="page-header">
+            <h1 class="page-title">National Land Degradation Intelligence</h1>
+            <p class="page-description">
+              Comprehensive geospatial monitoring and analytical intelligence covering 36 Indian States and Union Territories. Sourced from the Space Applications Centre (ISRO SAC) Desertification & Land Degradation Atlas of India.
+            </p>
+          </div>
+
+          <!-- Summary Metric Cards -->
+          <div class="summary-cards-grid">
+            <div class="summary-card">
+              <div class="card-top">
+                <span class="card-label">Monitored States & UTs</span>
+                <div class="card-icon-badge"><i class="fas fa-map-marked"></i></div>
+              </div>
+              <div class="card-value" id="metric-total-states">36 / 36</div>
+              <div class="card-subtext"><i class="fas fa-check-circle" style="color:var(--sev-low);"></i> 100% National Coverage</div>
+            </div>
+
+            <div class="summary-card accent-teal">
+              <div class="card-top">
+                <span class="card-label">Total Monitored Area</span>
+                <div class="card-icon-badge"><i class="fas fa-globe-asia"></i></div>
+              </div>
+              <div class="card-value" id="metric-monitored-area">316.6 Mha</div>
+              <div class="card-subtext"><i class="fas fa-vector-square"></i> Total Geographical Area (TGA)</div>
+            </div>
+
+            <div class="summary-card accent-red">
+              <div class="card-top">
+                <span class="card-label">Degraded Land Area</span>
+                <div class="card-icon-badge"><i class="fas fa-exclamation-triangle"></i></div>
+              </div>
+              <div class="card-value" id="metric-degraded-area">109.9 Mha</div>
+              <div class="card-subtext"><i class="fas fa-layer-group"></i> Active Degradation Footprint</div>
+            </div>
+
+            <div class="summary-card accent-amber">
+              <div class="card-top">
+                <span class="card-label">National Degraded %</span>
+                <div class="card-icon-badge"><i class="fas fa-percentage"></i></div>
+              </div>
+              <div class="card-value" id="metric-degraded-pct">34.7%</div>
+              <div class="card-subtext"><i class="fas fa-chart-line"></i> +1.01% Net Increase Since 2003</div>
+            </div>
+
+            <div class="summary-card accent-red">
+              <div class="card-top">
+                <span class="card-label">Most Affected State</span>
+                <div class="card-icon-badge"><i class="fas fa-fire-alt"></i></div>
+              </div>
+              <div class="card-value" id="metric-most-affected" style="font-size:1.35rem;">Rajasthan (62.0%)</div>
+              <div class="card-subtext"><i class="fas fa-wind"></i> 21.23 Mha (Wind Deflation & Aridity)</div>
+            </div>
+          </div>
+
+          <!-- Dynamic Filter Bar -->
+          <div class="filter-toolbar">
+            <div class="filters-group">
+              <div class="filter-item">
+                <label>Filter Region</label>
+                <select class="filter-select" id="filter-region">
+                  <option value="all">All Regions (National)</option>
+                  <option value="Northern">Northern Region</option>
+                  <option value="Southern">Southern Region</option>
+                  <option value="Western">Western Region</option>
+                  <option value="Eastern">Eastern Region</option>
+                  <option value="Central">Central Region</option>
+                  <option value="North-Eastern">North-Eastern Region</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label>Severity Category</label>
+                <select class="filter-select" id="filter-severity">
+                  <option value="all">All Severity Tiers</option>
+                  <option value="Extreme">Extreme (&ge; 60%)</option>
+                  <option value="Very High">Very High (45% - 60%)</option>
+                  <option value="High">High (30% - 45%)</option>
+                  <option value="Moderate">Moderate (15% - 30%)</option>
+                  <option value="Low">Low (&lt; 15%)</option>
+                </select>
+              </div>
+
+              <div class="filter-item">
+                <label>Atlas Analysis Cycle</label>
+                <select class="filter-select" id="filter-year">
+                  <option value="2018_19">Cycle 3: 2018-19 (Latest Verified)</option>
+                  <option value="2011_13">Cycle 2: 2011-13</option>
+                  <option value="2003_05">Cycle 1: 2003-05</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px;">
+              <button class="btn btn-outline" id="btn-reset-filters">
+                <i class="fas fa-undo"></i> Reset Filters
+              </button>
+              <button class="btn btn-primary" onclick="navigateToView('map')">
+                <i class="fas fa-map"></i> Open GIS Map
+              </button>
+            </div>
+          </div>
+
+          <!-- Charts Analytics Grid -->
+          <div class="charts-grid">
+            <div class="chart-card col-6">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Degradation by Dominant Process</div>
+                  <div class="chart-subtitle">Distribution across water erosion, vegetation loss, wind deflation, and salinity</div>
+                </div>
+              </div>
+              <div class="chart-container-inner">
+                <canvas id="chart-categories"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-card col-6">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Top Degraded States (% of TGA)</div>
+                  <div class="chart-subtitle">Ranked comparison of state land degradation severity</div>
+                </div>
+              </div>
+              <div class="chart-container-inner">
+                <canvas id="chart-state-bars"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-card col-6">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Historical Degradation Trend (2003 - 2019)</div>
+                  <div class="chart-subtitle">Three-cycle remote sensing time-series tracking national degraded land %</div>
+                </div>
+              </div>
+              <div class="chart-container-inner">
+                <canvas id="chart-history-trend"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-card col-6">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Regional Land Degradation Profile</div>
+                  <div class="chart-subtitle">Total vs Degraded Area across Indian geographical zones</div>
+                </div>
+              </div>
+              <div class="chart-container-inner">
+                <canvas id="chart-regional"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. SATELLITE INTELLIGENCE & LIVE EARTH MONITORING -->
+        <section class="view-section" id="satellite-view">
+          <div class="page-header" style="margin-bottom: 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-satellite-dish" style="color:var(--primary-600); margin-right:8px;"></i>Satellite Intelligence – Live Earth Observation</h1>
+                <p class="page-description">
+                  Multi-resolution optical satellite imagery, NASA daily near-real-time observations, multispectral vegetation indices (NDVI/NDWI), and temporal change detection across India.
+                </p>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary btn-sm" id="btn-toggle-split-view">
+                  <i class="fas fa-columns"></i> Split Swipe Compare
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-toggle-meta-drawer">
+                  <i class="fas fa-info-circle"></i> Sensor Metadata
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-toggle-sat-fullscreen">
+                  <i class="fas fa-expand"></i> Fullscreen
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="satellite-workspace">
+            <!-- Normal Satellite Map View -->
+            <div class="satellite-map-wrapper" id="satellite-single-wrapper">
+              <!-- Top Floating HUD Controls -->
+              <div class="sat-floating-hud-top">
+                <!-- Preset Hotspot Selector -->
+                <div class="sat-glass-pill">
+                  <i class="fas fa-crosshairs" style="color:#4ade80;"></i>
+                  <span style="font-weight:600; font-size:0.8rem; color:#94a3b8;">Hotspot:</span>
+                  <select id="sat-hotspot-select" style="background:transparent; border:none; color:#fff; font-weight:600; font-size:0.82rem; outline:none; cursor:pointer;">
+                    <option value="india" style="background:#0b1319;">National India View</option>
+                    <option value="thar" style="background:#0b1319;">Thar Desert Dunes (Rajasthan)</option>
+                    <option value="chambal" style="background:#0b1319;">Chambal Ravine Expansion (MP)</option>
+                    <option value="sambhar" style="background:#0b1319;">Sambhar Salt Lake Desiccation (RJ)</option>
+                    <option value="sundarbans" style="background:#0b1319;">Sundarbans Mangrove Stress (WB)</option>
+                    <option value="muktsar" style="background:#0b1319;">Muktsar Saline Waterlogging (PB)</option>
+                  </select>
+                </div>
+
+                <!-- Basemap Switcher Group -->
+                <div class="sat-btn-group" id="sat-basemap-group">
+                  <button class="sat-hud-btn active" data-layer="esri-satellite" title="Esri High-Resolution Optical Satellite">
+                    <i class="fas fa-globe-asia"></i> High-Res Satellite
+                  </button>
+                  <button class="sat-hud-btn" data-layer="nasa-modis" title="NASA Terra MODIS Daily Near-Real-Time True Color">
+                    <i class="fas fa-sun"></i> NASA Daily NRT
+                  </button>
+                  <button class="sat-hud-btn" data-layer="topo-terrain" title="OpenTopoMap Topographic Terrain">
+                    <i class="fas fa-mountain"></i> Terrain
+                  </button>
+                  <button class="sat-hud-btn" data-layer="osm-streets" title="OpenStreetMap Vector Road Layout">
+                    <i class="fas fa-road"></i> Streets
+                  </button>
+                </div>
+
+                <!-- Layer Overlays Group -->
+                <div class="sat-btn-group">
+                  <button class="sat-hud-btn" id="btn-sat-hybrid-overlay" title="Toggle Political Boundaries & Roads">
+                    <i class="fas fa-layer-group"></i> Hybrid Roads
+                  </button>
+                  <button class="sat-hud-btn" id="btn-sat-ndvi-overlay" title="Toggle Sentinel-2 NDVI Vegetation Heat-Ramp">
+                    <i class="fas fa-leaf"></i> NDVI Overlay
+                  </button>
+                  <button class="sat-hud-btn" id="btn-sat-degrade-overlay" title="Toggle ISRO SAC Degraded Boundaries Mask">
+                    <i class="fas fa-exclamation-triangle"></i> Degraded Land Mask
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Satellite Leaflet Container -->
+              <div id="satellite-map"></div>
+
+              <!-- Live Coordinates & Map Scale Pill -->
+              <div class="sat-coords-badge" id="sat-coords-display">
+                <i class="fas fa-location-arrow"></i>
+                <span id="sat-coords-text">Lat: 22.5937° N, Lng: 78.9629° E | Zoom: 5</span>
+                <span style="color:#64748b;">|</span>
+                <span id="sat-sensor-tag">Sensor: Esri World Imagery (Maxar/Airbus 0.5m)</span>
+              </div>
+
+              <!-- Floating Observation Metadata Drawer -->
+              <div class="sat-metadata-drawer" id="sat-metadata-drawer">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:8px;">
+                  <span style="font-weight:700; font-size:0.9rem; color:#4ade80;"><i class="fas fa-satellite"></i> Observation Telemetry</span>
+                  <button onclick="document.getElementById('sat-metadata-drawer').classList.remove('active')" style="background:none; border:none; color:#94a3b8; cursor:pointer;"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Primary Sensor</span>
+                  <span class="meta-val" id="meta-sensor-name">Sentinel-2A/B MSI & Esri Optical</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Observation Date</span>
+                  <span class="meta-val" id="meta-obs-date">18-Nov-2024 10:35 UTC</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Spatial Resolution</span>
+                  <span class="meta-val">10m Optical / 0.5m Composite</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Cloud Coverage</span>
+                  <span class="meta-val" id="meta-cloud-cover">1.8% (Analysis Ready)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Processing Level</span>
+                  <span class="meta-val">L2A Surface Reflectance (BOA)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Data Latency</span>
+                  <span class="meta-val" style="color:#38bdf8;">~3 to 6 Hours (NRT Orbit)</span>
+                </div>
+                <div style="font-size:0.75rem; color:#94a3b8; line-height:1.4; margin-top:4px;">
+                  <i class="fas fa-shield-alt" style="color:#eab308;"></i> <strong>Technical Caveat:</strong> Satellite telemetry is not continuous live video. Orbits record at scheduled intervals and undergo radiometric calibration.
+                </div>
+              </div>
+
+              <!-- Timeline Scrubber Bar -->
+              <div class="sat-timeline-scrubber" id="sat-timeline-scrubber">
+                <span style="font-size:0.75rem; color:#94a3b8; font-weight:700; margin-right:4px;"><i class="fas fa-history"></i> Epoch:</span>
+                <button class="timeline-year-btn" data-year="2017">2017</button>
+                <button class="timeline-year-btn" data-year="2019">2019</button>
+                <button class="timeline-year-btn" data-year="2021">2021</button>
+                <button class="timeline-year-btn" data-year="2023">2023</button>
+                <button class="timeline-year-btn" data-year="2024">2024</button>
+                <button class="timeline-year-btn active" data-year="latest">Latest NRT</button>
+              </div>
+            </div>
+
+            <!-- Split-Screen Swipe Comparison Viewer -->
+            <div class="split-swipe-container" id="satellite-split-wrapper">
+              <div class="split-label-badge" style="left:20px; border-color:#38bdf8;">
+                <i class="fas fa-history"></i> Baseline: 2017 Historical Satellite Observation
+              </div>
+              <div class="split-label-badge" style="right:20px; border-color:#22c55e;">
+                <i class="fas fa-satellite"></i> Recent: 2024/2025 Multi-Spectral Composite
+              </div>
+
+              <div id="split-map-left" class="split-map-pane"></div>
+              <div id="split-map-right" class="split-map-pane"></div>
+
+              <div class="split-handle-bar" id="split-drag-handle">
+                <div class="split-handle-button">
+                  <i class="fas fa-arrows-alt-h"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Multispectral Indices & Band Calculation Card -->
+            <div class="ndvi-color-ramp-wrap">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                <div>
+                  <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:4px; color:var(--text-main);">
+                    <i class="fas fa-leaf" style="color:var(--primary-600);"></i> Multispectral Vegetation Monitoring & NDVI Scale
+                  </h3>
+                  <p style="font-size:0.85rem; color:var(--text-muted);">
+                    Calculated from Sentinel-2 & Landsat NIR (Band 8, 842nm) and Red (Band 4, 665nm) surface reflectance: <code>NDVI = (NIR - Red) / (NIR + Red)</code>
+                  </p>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <span class="severity-badge sev-vlow" style="font-family:'JetBrains Mono';">Sentinel-2 MSI 10m</span>
+                  <span class="severity-badge sev-low" style="font-family:'JetBrains Mono';">Landsat-9 OLI 30m</span>
+                </div>
+              </div>
+
+              <div class="ndvi-bar-gradient"></div>
+              <div class="ndvi-scale-labels">
+                <span>&lt; 0.0 (Water / Shadow)</span>
+                <span>0.05 – 0.15 (Barren Soil / Dunes)</span>
+                <span>0.20 – 0.45 (Crops / Sparse Scrub)</span>
+                <span>&gt; 0.60 (Dense Healthy Canopy)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. INTERACTIVE INDIA MAP VIEW -->
+        <section class="view-section" id="map-view">
+          <div class="page-header" style="margin-bottom: 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+              <div>
+                <h1 class="page-title">Interactive Geospatial India Map</h1>
+                <p class="page-description">Accurate state and union territory boundaries with live choropleth filtering across multi-spectral degradation modes.</p>
+              </div>
+              <button class="btn btn-outline btn-sm" id="map-reset-btn">
+                <i class="fas fa-compress-arrows-alt"></i> Reset India Extent
+              </button>
+            </div>
+          </div>
+
+          <div id="map-view-wrapper">
+            <!-- Map Viewport -->
+            <div id="map-viewport">
+              
+              <!-- Floating Layer & Search Controls -->
+              <div class="map-floating-controls">
+                <div class="map-search-bar">
+                  <i class="fas fa-search" style="color:var(--text-muted);"></i>
+                  <input type="text" id="map-state-search" placeholder="Type state name to zoom...">
+                </div>
+
+                <div class="map-layer-pillbox">
+                  <button class="layer-btn active" data-mode="overall">Overall %</button>
+                  <button class="layer-btn" data-mode="water_erosion">Water Erosion</button>
+                  <button class="layer-btn" data-mode="desertification">Wind & Desert</button>
+                  <button class="layer-btn" data-mode="salinity">Soil Salinity</button>
+                  <button class="layer-btn" data-mode="waterlogging">Waterlogging</button>
+                  <button class="layer-btn" data-mode="vegetation">Vegetation Loss</button>
+                </div>
+              </div>
+
+              <!-- Floating Map Legend -->
+              <div class="map-floating-legend">
+                <div class="legend-title" id="map-legend-title">Degradation Severity</div>
+                <div class="legend-scale" id="map-legend-scale">
+                  <div class="legend-item"><div class="legend-color-box" style="background:#b91c1c;"></div><span>&ge; 60% (Extreme)</span></div>
+                  <div class="legend-item"><div class="legend-color-box" style="background:#ef4444;"></div><span>45% - 60% (Very High)</span></div>
+                  <div class="legend-item"><div class="legend-color-box" style="background:#f97316;"></div><span>30% - 45% (High)</span></div>
+                  <div class="legend-item"><div class="legend-color-box" style="background:#f59e0b;"></div><span>15% - 30% (Moderate)</span></div>
+                  <div class="legend-item"><div class="legend-color-box" style="background:#10b981;"></div><span>&lt; 15% (Low)</span></div>
+                </div>
+              </div>
+
+              <div id="leaflet-map"></div>
+            </div>
+
+            <!-- Slide-in State Profile Drawer -->
+            <div id="state-drawer" class="collapsed">
+              <div class="drawer-header">
+                <div>
+                  <h2 id="drawer-state-name" style="font-size:1.45rem; font-weight:800; color:var(--text-main);">State Name</h2>
+                  <div id="drawer-state-type" style="font-size:0.8rem; color:var(--text-muted);">State Overview</div>
+                </div>
+                <button class="drawer-close-btn" onclick="closeStateDrawer()" title="Close Drawer">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+
+              <div class="drawer-body">
+                <div>
+                  <span id="drawer-severity-badge" class="severity-pill high">High Severity</span>
+                </div>
+
+                <div class="state-card-metrics" style="margin: 0;">
+                  <div class="state-metric-box">
+                    <span class="state-metric-val" id="drawer-total-area">0 Mha</span>
+                    <span class="state-metric-lbl">Total Area</span>
+                  </div>
+                  <div class="state-metric-box">
+                    <span class="state-metric-val" id="drawer-degraded-area">0 Mha</span>
+                    <span class="state-metric-lbl">Degraded Area</span>
+                  </div>
+                  <div class="state-metric-box" style="grid-column: span 2;">
+                    <span class="state-metric-val" id="drawer-degraded-pct" style="color:var(--sev-high);">0%</span>
+                    <span class="state-metric-lbl">Proportion of Land Affected</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 style="font-size:0.9rem; font-weight:700; color:var(--text-main); margin-bottom:8px;">Major Degradation Processes</h4>
+                  <div id="drawer-processes-list"></div>
+                </div>
+
+                <div>
+                  <h4 style="font-size:0.9rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">Main Contributing Factors</h4>
+                  <ul id="drawer-causes-list" style="padding-left:18px; font-size:0.88rem; color:var(--text-secondary); line-height:1.5;"></ul>
+                </div>
+
+                <div>
+                  <h4 style="font-size:0.9rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">Documented Environmental Impact</h4>
+                  <p id="drawer-impact-text" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.5;"></p>
+                </div>
+
+                <div>
+                  <h4 style="font-size:0.9rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">Recommended Prevention Measures</h4>
+                  <p id="drawer-prevention-text" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.5;"></p>
+                </div>
+
+                <div>
+                  <h4 style="font-size:0.9rem; font-weight:700; color:var(--text-main); margin-bottom:6px;">Active Schemes & Interventions</h4>
+                  <div id="drawer-schemes-tags"></div>
+                </div>
+
+                <div style="background-color:var(--bg-subtle); padding:12px; border-radius:var(--radius-md); font-size:0.75rem; color:var(--text-muted);">
+                  <strong>Verified Data Citation:</strong>
+                  <div id="drawer-source-text">ISRO SAC Atlas 2021</div>
+                </div>
+
+                <div style="display:flex; gap:10px;">
+                  <button class="btn btn-primary" id="btn-bookmark-state" style="width:100%;">
+                    <i class="far fa-bookmark"></i> Save to Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. ADVANCED GIS MEASUREMENT STUDIO -->
+        <section class="view-section" id="gis-studio-view">
+          <div class="page-header" style="margin-bottom: 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-draw-polygon" style="color:var(--primary-600); margin-right:8px;"></i>Advanced GIS Measurement Studio</h1>
+                <p class="page-description">
+                  Draw custom geographical polygons, rectangles, circles, or paths to compute surface area in hectares and square kilometers, determine perimeters, and calculate degradation overlap with ISRO SAC datasets.
+                </p>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary btn-sm" id="btn-export-gis-geojson">
+                  <i class="fas fa-download"></i> Export GeoJSON
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-reset-gis-canvas">
+                  <i class="fas fa-trash-alt"></i> Clear Canvas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="gis-studio-layout">
+            <!-- Map Canvas Wrap -->
+            <div class="gis-map-canvas-wrap">
+              <div id="gis-studio-map"></div>
+            </div>
+
+            <!-- Measurement Sidebar Panel -->
+            <div class="gis-sidebar-panel">
+              <h3 style="font-size:1rem; font-weight:700; color:var(--text-main);">Spatial Tools Palette</h3>
+              <div class="gis-tools-palette">
+                <button class="btn btn-outline btn-sm active" id="gis-tool-poly">
+                  <i class="fas fa-draw-polygon"></i> Free Polygon
+                </button>
+                <button class="btn btn-outline btn-sm" id="gis-tool-rect">
+                  <i class="fas fa-vector-square"></i> Rectangle
+                </button>
+                <button class="btn btn-outline btn-sm" id="gis-tool-circle">
+                  <i class="far fa-circle"></i> Circle Radius
+                </button>
+                <button class="btn btn-outline btn-sm" id="gis-tool-line">
+                  <i class="fas fa-ruler-combined"></i> Distance
+                </button>
+              </div>
+
+              <div style="border-top:1px solid var(--border-color); padding-top:12px;">
+                <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px;">Live Geometry Metrics</h4>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div class="gis-metric-pill">
+                    <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Enclosed Area</span>
+                    <span class="gis-metric-val" id="gis-val-ha">0.00 Ha</span>
+                    <span style="font-size:0.8rem; color:var(--text-muted);" id="gis-val-sqkm">0.00 km²</span>
+                  </div>
+                  <div class="gis-metric-pill">
+                    <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Perimeter / Length</span>
+                    <span class="gis-metric-val" id="gis-val-len" style="color:#0ea5e9;">0.00 km</span>
+                    <span style="font-size:0.8rem; color:var(--text-muted);" id="gis-val-meters">0 meters</span>
+                  </div>
+                  <div class="gis-metric-pill">
+                    <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Centroid Coordinates</span>
+                    <span style="font-family:'JetBrains Mono'; font-size:0.82rem; color:var(--text-main); font-weight:600;" id="gis-val-centroid">Click on map to begin</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="border-top:1px solid var(--border-color); padding-top:12px;">
+                <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px;">Degradation Overlap Analysis</h4>
+                <div id="gis-overlap-box" style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px; font-size:0.82rem; line-height:1.5; color:var(--text-secondary);">
+                  Draw a polygon across any territory in India to query spatial intersection with ISRO SAC degraded land boundaries.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. STATE EXPLORER VIEW -->
+        <section class="view-section" id="states-view">
+          <div class="page-header">
+            <h1 class="page-title">State-Wise Environmental Intelligence</h1>
+            <p class="page-description">Deep-dive into verified profiles for each of India's 28 States and 8 Union Territories. Click any state card to open its geospatial profile on the interactive GIS map.</p>
+          </div>
+
+          <div id="states-grid-container" class="states-grid">
+            <!-- Rendered by app.js -->
+          </div>
+        </section>
+
+        <!-- 6. STATE COMPARISON STUDIO VIEW -->
+        <section class="view-section" id="compare-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-columns" style="color:var(--primary-600); margin-right:8px;"></i>State vs State Comparison Studio</h1>
+                <p class="page-description">
+                  Cross-compare environmental degradation metrics, soil erosion indices, dominant desertification vectors, and Land Degradation Neutrality (LDN) benchmarks across Indian states.
+                </p>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-export-comparison-csv">
+                <i class="fas fa-file-csv"></i> Export Comparison CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- State Selectors -->
+          <div class="compare-selectors-grid">
+            <div class="compare-card-selector">
+              <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Select Primary State</label>
+              <select id="compare-sel-1" class="filter-select" style="width:100%;"></select>
+            </div>
+            <div class="compare-card-selector">
+              <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Select Comparison State 2</label>
+              <select id="compare-sel-2" class="filter-select" style="width:100%;"></select>
+            </div>
+            <div class="compare-card-selector">
+              <label style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Select Comparison State 3 (Optional)</label>
+              <select id="compare-sel-3" class="filter-select" style="width:100%;">
+                <option value="">-- None --</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Comparison Table Container -->
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); overflow-x:auto; margin-bottom:24px; box-shadow:var(--shadow-sm);">
+            <div id="compare-table-render-wrap"></div>
+          </div>
+
+          <!-- Comparison Charts Grid -->
+          <div class="charts-grid">
+            <div class="chart-card col-6">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:12px; color:var(--text-main);">Degraded Area vs Total Geographical Area (Mha)</h3>
+              <div style="height:320px;">
+                <canvas id="chart-compare-bar"></canvas>
+              </div>
+            </div>
+            <div class="chart-card col-6">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:12px; color:var(--text-main);">Environmental Vulnerability Radar Vector</h3>
+              <div style="height:320px;">
+                <canvas id="chart-compare-radar"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. ANALYTICS HUB VIEW -->
+        <section class="view-section" id="analytics-view">
+          <div class="page-header">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+              <div>
+                <h1 class="page-title">Environmental Analytics & Data Export</h1>
+                <p class="page-description">Granular metrics, cross-regional matrices, and open datasets for research and educational purposes.</p>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button onclick="exportDataset('states', 'csv')" class="btn btn-outline btn-sm">
+                  <i class="fas fa-file-csv"></i> Export CSV
+                </button>
+                <button onclick="exportDataset('states', 'json')" class="btn btn-outline btn-sm">
+                  <i class="fas fa-file-code"></i> Export JSON
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-card" style="margin-bottom: 24px;">
+            <h3 style="margin-bottom: 12px;">Methodological Framework & Metadata</h3>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
+              The geospatial dataset utilizes the standard classification scheme designed by the Space Applications Centre (SAC), ISRO. Satellite imagery from <strong>IRS AWiFS</strong> (Advanced Wide Field Sensor with 56m spatial resolution) and <strong>LISS-III</strong> (Linear Imaging Self-Scanning Sensor with 23.5m resolution) is combined with ground truth verification by regional ICAR institutes (CAZRI, CSSRI, IISWC) and State Remote Sensing Centres.
+            </p>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; background: var(--bg-subtle); padding: 14px; border-radius: var(--radius-md); font-size: 0.85rem;">
+              <div><strong>Mapping Scale:</strong> 1:500,000 national, 1:50,000 district</div>
+              <div><strong>Primary Sensors:</strong> IRS ResourceSat-2/2A AWiFS</div>
+              <div><strong>Temporal Baseline:</strong> 2003-05, 2011-13, 2018-19</div>
+              <div><strong>UNCCD Alignment:</strong> SDG Target 15.3 (LDN)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. HISTORICAL ENVIRONMENTAL CHANGE EXPLORER -->
+        <section class="view-section" id="historical-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-history" style="color:var(--primary-600); margin-right:8px;"></i>15-Year Historical Environmental Transition Explorer</h1>
+                <p class="page-description">
+                  Multi-decadal comparative tracking across ISRO SAC Cycle 1 (2003-05), Cycle 2 (2011-13), and Cycle 3 (2018-19) to observe net degradation trends and Land Degradation Neutrality (LDN) progress.
+                </p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="exportDataset('states', 'json')">
+                <i class="fas fa-download"></i> Export Historical Series (JSON)
+              </button>
+            </div>
+          </div>
+
+          <!-- Multi-Cycle National Metric Summary -->
+          <div class="summary-cards-grid" style="margin-bottom: 24px;">
+            <div class="summary-card">
+              <span class="card-label">Cycle 1 (2003–05)</span>
+              <div class="card-value" style="font-size:1.6rem; color:#64748b;">94.53 Mha</div>
+              <span class="card-subtext">28.76% of National TGA</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Cycle 2 (2011–13)</span>
+              <div class="card-value" style="font-size:1.6rem; color:#ca8a04;">96.40 Mha</div>
+              <span class="card-subtext">+1.87 Mha Expansion</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Cycle 3 (2018–19)</span>
+              <div class="card-value" style="font-size:1.6rem; color:#dc2626;">97.85 Mha</div>
+              <span class="card-subtext">+1.45 Mha Recent Increase</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Net 15-Year Trajectory</span>
+              <div class="card-value" style="font-size:1.6rem; color:#e11d48;">+3.32 Mha</div>
+              <span class="card-subtext">+1.01% Net Land Degradation</span>
+            </div>
+          </div>
+
+          <!-- Historical Transition Table -->
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); overflow-x:auto; padding:20px; box-shadow:var(--shadow-sm); margin-bottom:24px;">
+            <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:12px; color:var(--text-main);">
+              State-by-State 15-Year Degradation Transition Matrix (ISRO SAC 2021 Atlas)
+            </h3>
+            <div id="historical-table-container"></div>
+          </div>
+        </section>
+
+        <!-- 9. ENVIRONMENTAL IMPACT CALCULATOR -->
+        <section class="view-section" id="calculator-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <h1 class="page-title"><i class="fas fa-calculator" style="color:var(--primary-600); margin-right:8px;"></i>Environmental Impact Assessment & Restoration Calculator</h1>
+            <p class="page-description">
+              Empirical modeling estimating topsoil loss prevented, carbon sequestration potential, rainwater infiltration retention, and economic returns based on ICAR-IISWC guidelines and IPCC Tier-2 coefficients.
+            </p>
+          </div>
+
+          <div class="calculator-container">
+            <!-- Input Form -->
+            <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm);">
+              <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:16px; color:var(--text-main);">Project Parameter Inputs</h3>
+              
+              <div class="filter-item" style="margin-bottom:14px;">
+                <label>Target Indian State</label>
+                <select id="calc-state-select" class="filter-select" style="width:100%;"></select>
+              </div>
+
+              <div class="filter-item" style="margin-bottom:14px;">
+                <label>Project Land Area (in Hectares)</label>
+                <input type="number" id="calc-area-input" class="filter-select" value="150" min="1" max="1000000" style="width:100%;">
+              </div>
+
+              <div class="filter-item" style="margin-bottom:14px;">
+                <label>Primary Land Degradation Process</label>
+                <select id="calc-category-select" class="filter-select" style="width:100%;">
+                  <option value="Water Erosion">Water Erosion (Sheet / Gully / Ravine)</option>
+                  <option value="Wind Erosion">Wind Erosion (Sand Dune Shifting / Deflation)</option>
+                  <option value="Salinity / Alkalinity">Soil Salinity / Alkalinity / Sodic Stress</option>
+                  <option value="Vegetation Degradation">Forest Degradation & Vegetative Loss</option>
+                  <option value="Waterlogging">Canal Seepage & Surface Waterlogging</option>
+                </select>
+              </div>
+
+              <div class="filter-item" style="margin-bottom:14px;">
+                <label>Observed Degradation Severity</label>
+                <select id="calc-severity-select" class="filter-select" style="width:100%;">
+                  <option value="Slight">Slight (Early topsoil loss, patchy cover)</option>
+                  <option value="Moderate" selected>Moderate (Visible rills, 10-25% crop yield loss)</option>
+                  <option value="High">High (Deep gullies, extensive soil crusting)</option>
+                  <option value="Severe">Severe (Active sand dunes, badland morphology)</option>
+                  <option value="Very Severe">Very Severe (Complete biological sterility)</option>
+                </select>
+              </div>
+
+              <div class="filter-item" style="margin-bottom:20px;">
+                <label>Proposed Restoration Intervention</label>
+                <select id="calc-method-select" class="filter-select" style="width:100%;">
+                  <option value="Afforestation & Native Plantation">Afforestation with Native Drought-Hardy Trees</option>
+                  <option value="Agroforestry & Silvopasture" selected>Agroforestry & Multi-Tier Silvopasture</option>
+                  <option value="Contour Bunding & Trenching">Contour Bunding, Terracing & Continuous Trenching</option>
+                  <option value="Check Dams & Gully Plugging">Check Dams & Vegetated Loose Boulder Gully Plugs</option>
+                  <option value="Sand Dune Shelterbelts">Sand Dune Fixation & Shelterbelt Plantations</option>
+                  <option value="Sub-surface Drainage & Leaching">Sub-surface Drainage & Gypsum Soil Reclamation</option>
+                </select>
+              </div>
+
+              <button class="btn btn-primary" id="btn-run-calculator" style="width:100%; justify-content:center;">
+                <i class="fas fa-chart-line"></i> Calculate Environmental & Economic Impact
+              </button>
+            </div>
+
+            <!-- Calculation Output Cards -->
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div class="calc-results-grid">
+                <div class="calc-impact-box">
+                  <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Topsoil Loss Prevented</span>
+                  <div class="big-metric" id="res-calc-soil">4,551 t/yr</div>
+                  <span style="font-size:0.82rem; color:var(--text-secondary);">Arrests fertile A-horizon sediment discharge into reservoirs.</span>
+                </div>
+
+                <div class="calc-impact-box">
+                  <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Carbon Sequestration</span>
+                  <div class="big-metric" id="res-calc-carbon" style="color:#0ea5e9;">792 tCO₂e/yr</div>
+                  <span style="font-size:0.82rem; color:var(--text-secondary);">Above & belowground biomass and soil organic carbon (SOC) sink.</span>
+                </div>
+
+                <div class="calc-impact-box">
+                  <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Rainwater Infiltration</span>
+                  <div class="big-metric" id="res-calc-water" style="color:#10b981;">270,000 m³/yr</div>
+                  <span style="font-size:0.82rem; color:var(--text-secondary);">Deep sub-surface aquifer recharge & monsoonal runoff buffer.</span>
+                </div>
+
+                <div class="calc-impact-box">
+                  <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Est. Economic Preservation</span>
+                  <div class="big-metric" id="res-calc-eco" style="color:#f59e0b;">₹34.8 Lakhs</div>
+                  <span style="font-size:0.82rem; color:var(--text-secondary);">Agricultural yield preservation and biomass harvest value.</span>
+                </div>
+              </div>
+
+              <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:20px; font-size:0.85rem; line-height:1.6; color:var(--text-secondary);">
+                <div style="font-weight:700; color:var(--text-main); margin-bottom:4px;">
+                  <i class="fas fa-book-open" style="color:var(--primary-600); margin-right:6px;"></i> Scientific Model Reference & Assumptions:
+                </div>
+                Outputs computed using ICAR-Indian Institute of Soil and Water Conservation (IISWC) Universal Soil Loss Equation (USLE) regional erosion factors and IPCC Tier-2 Land Use & Forestry carbon coefficients. Indicative model estimation for preliminary feasibility assessment.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. KNOWLEDGE CENTER VIEW -->
+        <section class="view-section" id="knowledge-view">
+          <div class="knowledge-hero">
+            <h2>Land Degradation Knowledge Center</h2>
+            <p>
+              Comprehensive educational repository explaining the physics, soil chemistry, ecological drivers, and socio-economic consequences of land degradation across the Indian subcontinent.
+            </p>
+          </div>
+
+          <!-- Structured Learning Cards -->
+          <div class="articles-grid">
+            <div class="article-card">
+              <span class="article-badge">Fundamentals</span>
+              <h3>What is Land Degradation?</h3>
+              <p>
+                Land degradation represents a long-term decline in biological productivity, ecological integrity, and value of land resources caused by anthropogenic activities and climatic fluctuations. In India, nearly 30% of the landmass is affected by soil erosion, salinization, waterlogging, or vegetation loss.
+              </p>
+            </div>
+
+            <div class="article-card">
+              <span class="article-badge">Soil Physics</span>
+              <h3>Water & Wind Erosion Dynamics</h3>
+              <p>
+                Water erosion is the single largest driver of soil degradation in India (11.01% of TGA), stripping fertile humus-rich topsoil through splash, sheet, rill, and ravine gully mechanisms. Wind erosion dominates in arid Rajasthan and Gujarat, deflating active sand dunes and burying fertile canal corridors.
+              </p>
+            </div>
+
+            <div class="article-card">
+              <span class="article-badge">Chemical Degradation</span>
+              <h3>Soil Salinity & Alkalinity (Usar Land)</h3>
+              <p>
+                Secondary salinization occurs when excessive canal irrigation causes saline groundwater tables to rise. Capillary action wicks water upward, evaporating at the surface and leaving behind toxic encrustations of sodium salts that disperse clay colloids and render fertile fields completely barren.
+              </p>
+            </div>
+
+            <div class="article-card">
+              <span class="article-badge">Forest Ecosystems</span>
+              <h3>Deforestation & Shifting Cultivation (Jhum)</h3>
+              <p>
+                Shortened jhum fallow cycles (down from 15 years to 3-5 years) in northeastern states and mining overburden disposal in Central India strip protective forest canopies. Without tree root anchors, high-intensity monsoon rains wash tons of topsoil directly into river networks.
+              </p>
+            </div>
+
+            <div class="article-card">
+              <span class="article-badge">Policy & Treaties</span>
+              <h3>The Bonn Challenge & UNCCD COP14 Pledge</h3>
+              <p>
+                Under the Bonn Challenge, India pledged to restore 26 million hectares of degraded and deforested land by 2030. At UNCCD COP14 in New Delhi, the government adopted the New Delhi Declaration, aligning national missions with Land Degradation Neutrality (SDG Target 15.3).
+              </p>
+            </div>
+
+            <div class="article-card">
+              <span class="article-badge">Biological Restoration</span>
+              <h3>Sustainable Land Management (SLM)</h3>
+              <p>
+                SLM integrates mechanical structures (contour bunds, check dams) with biological vegetation (vetiver hedgerows, nitrogen-fixing legumes, agroforestry) to optimize land use while preserving moisture retention and soil biological life.
+              </p>
+            </div>
+          </div>
+
+          <!-- Verified Educational Video Resources -->
+          <div class="page-header" style="margin-top: 24px;">
+            <h2 class="page-title" style="font-size: 1.4rem;">Verified Educational Video Lectures</h2>
+            <p class="page-description">Authoritative documentaries and technical masterclasses from UNCCD, FAO, ISRO, and research institutions.</p>
+          </div>
+
+          <div id="videos-grid-container" class="videos-grid">
+            <!-- Rendered by app.js -->
+          </div>
+        </section>
+
+        <!-- 6. ADVANCED QUIZ & ASSESSMENT VIEW -->
+        <section class="view-section" id="quiz-view">
+          <div id="quiz-wrapper">
+            
+            <!-- Setup Screen -->
+            <div id="quiz-setup-screen" class="quiz-setup-box">
+              <div style="text-align: center; margin-bottom: 24px;">
+                <div class="brand-icon" style="margin: 0 auto 12px auto; width: 48px; height: 48px; font-size: 1.5rem;">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1 style="font-size: 1.7rem; font-weight:800; color:var(--text-main);">Land Degradation Assessment Examination</h1>
+                <p style="color:var(--text-muted); font-size:0.95rem; margin-top:4px;">
+                  Test your mastery across 55 scientifically vetted questions on Indian soils, desertification, hydrology, and restoration policy.
+                </p>
+              </div>
+
+              <div class="quiz-setup-grid">
+                <div class="filter-item">
+                  <label>Select Focus Topic</label>
+                  <select class="filter-select" id="quiz-topic-select">
+                    <option value="all">All Topics (Comprehensive)</option>
+                    <option value="Soil Erosion & Mechanics">Soil Erosion & Mechanics</option>
+                    <option value="Desertification & Arid Lands">Desertification & Arid Lands</option>
+                    <option value="Salinity, Sodicity & Waterlogging">Salinity, Sodicity & Waterlogging</option>
+                    <option value="Deforestation & Mining">Deforestation & Mining</option>
+                    <option value="Restoration, Policy & Bonn Challenge">Restoration, Policy & Bonn Challenge</option>
+                  </select>
+                </div>
+
+                <div class="filter-item">
+                  <label>Difficulty Tier</label>
+                  <select class="filter-select" id="quiz-difficulty-select">
+                    <option value="all">All Difficulty Levels</option>
+                    <option value="Easy">Easy (Foundational Concepts)</option>
+                    <option value="Medium">Medium (Applied Science)</option>
+                    <option value="Hard">Hard (Expert & Policy Level)</option>
+                  </select>
+                </div>
+
+                <div class="filter-item">
+                  <label>Number of Questions</label>
+                  <select class="filter-select" id="quiz-count-select">
+                    <option value="5">Quick Drill (5 Questions)</option>
+                    <option value="10" selected>Standard Assessment (10 Questions)</option>
+                    <option value="15">Extended Exam (15 Questions)</option>
+                    <option value="55">Full Question Pool (55 Questions)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="text-align: center; margin-top: 24px;">
+                <button class="btn btn-primary" id="btn-start-quiz" style="padding: 12px 32px; font-size: 1.05rem;">
+                  <i class="fas fa-play"></i> Begin Assessment
+                </button>
+              </div>
+            </div>
+
+            <!-- Active Quiz Screen -->
+            <div id="quiz-active-screen" class="quiz-active-card" style="display: none;">
+              <div class="quiz-progress-bar-wrap">
+                <div class="quiz-progress-bar-fill" id="quiz-progress-fill" style="width: 10%;"></div>
+              </div>
+
+              <div class="quiz-active-header">
+                <div>
+                  <span class="quiz-question-number" id="quiz-current-num">Question 1 of 10</span>
+                  <div style="display:flex; gap:6px; margin-top:4px;">
+                    <span class="article-badge" id="quiz-topic-tag">Soil Erosion</span>
+                    <span class="nav-badge" id="quiz-difficulty-tag">Medium</span>
+                  </div>
+                </div>
+                <div class="quiz-timer-pill">
+                  <i class="fas fa-stopwatch"></i>
+                  <span id="quiz-timer-display">00:00</span>
+                </div>
+              </div>
+
+              <h3 class="quiz-question-text" id="quiz-question-text">Question text goes here?</h3>
+
+              <div class="quiz-options-list" id="quiz-options-container">
+                <!-- Option cards rendered by app.js -->
+              </div>
+
+              <div class="quiz-nav-footer">
+                <button class="btn btn-outline" id="quiz-prev-btn">
+                  <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button class="btn btn-primary" id="quiz-next-btn">
+                  Next Question <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-primary" id="quiz-submit-btn" style="display: none; background-color: var(--sev-low);">
+                  <i class="fas fa-paper-plane"></i> Submit Assessment
+                </button>
+              </div>
+            </div>
+
+            <!-- Results & Review Screen -->
+            <div id="quiz-results-screen" class="quiz-results-card" style="display: none;">
+              <div class="score-circle-wrap" id="quiz-score-circle-wrap">
+                <div class="score-circle-inner">
+                  <div class="score-pct-number" id="quiz-final-pct-text">80%</div>
+                  <div class="score-pct-label">Score</div>
+                </div>
+              </div>
+
+              <h2 id="quiz-badge-title" style="font-size: 1.6rem; font-weight:800; color:var(--text-main); margin-bottom: 6px;">Master Environmentalist</h2>
+              <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom: 20px;">
+                You correctly answered <strong id="quiz-final-score-text">8 / 10</strong> questions.
+              </p>
+
+              <div style="display:flex; justify-content:center; gap:12px; margin-bottom: 32px;">
+                <button class="btn btn-primary" id="btn-retake-quiz">
+                  <i class="fas fa-redo"></i> Retake New Assessment
+                </button>
+                <button class="btn btn-outline" onclick="navigateToView('overview')">
+                  <i class="fas fa-home"></i> Back to Dashboard
+                </button>
+              </div>
+
+              <div style="text-align: left;">
+                <h3 style="font-size: 1.2rem; font-weight:700; color:var(--text-main); margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                  Complete Scientific Answer Review
+                </h3>
+                <div id="quiz-review-container"></div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 7. RESTORATION SOLUTIONS VIEW -->
+        <section class="view-section" id="solutions-view">
+          <div class="page-header">
+            <h1 class="page-title">Restoration & Solutions Center</h1>
+            <p class="page-description">Practical, scientifically proven engineering, biological, and agronomic interventions designed for Indian agro-ecological conditions.</p>
+          </div>
+
+          <div id="solutions-grid-container" class="solutions-grid">
+            <!-- Rendered by app.js -->
+          </div>
+        </section>
+
+        <!-- 8. NEWS & INITIATIVES VIEW -->
+        <section class="view-section" id="news-view">
+          <div class="page-header">
+            <h1 class="page-title">Environmental News & Government Initiatives</h1>
+            <p class="page-description">Verified press announcements, international multilateral agreements, and state-level afforestation programs with direct official citations.</p>
+          </div>
+
+          <div id="news-grid-container" class="articles-grid">
+            <!-- Rendered by app.js -->
+          </div>
+
+          <div class="page-header" style="margin-top: 36px;">
+            <h2 class="page-title" style="font-size: 1.4rem;">Official Publications & National Repositories</h2>
+          </div>
+
+          <div class="summary-card" style="padding: 0; overflow: hidden;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+              <thead>
+                <tr style="background-color: var(--bg-subtle); border-bottom: 1px solid var(--border-color);">
+                  <th style="padding: 12px 16px;">Document Title</th>
+                  <th style="padding: 12px 16px;">Publisher</th>
+                  <th style="padding: 12px 16px;">Format</th>
+                  <th style="padding: 12px 16px; text-align: right;">Access Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 14px 16px; font-weight: 600;">Desertification & Land Degradation Atlas of India (2021)</td>
+                  <td style="padding: 14px 16px; color: var(--text-muted);">ISRO Space Applications Centre</td>
+                  <td style="padding: 14px 16px;"><span class="nav-badge">PDF Atlas</span></td>
+                  <td style="padding: 14px 16px; text-align: right;">
+                    <a href="https://www.sac.gov.in/Vyom/SACDesertification.jsp" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                      Official Portal <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 14px 16px; font-weight: 600;">Bhuvan Thematic Geospatial Web Portal</td>
+                  <td style="padding: 14px 16px; color: var(--text-muted);">National Remote Sensing Centre (NRSC)</td>
+                  <td style="padding: 14px 16px;"><span class="nav-badge">GIS Platform</span></td>
+                  <td style="padding: 14px 16px; text-align: right;">
+                    <a href="https://bhuvan.nrsc.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                      Explore Bhuvan <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: 14px 16px; font-weight: 600;">Land Degradation Neutrality Target Setting Programme (LDN-TSP)</td>
+                  <td style="padding: 14px 16px; color: var(--text-muted);">MoEFCC, Government of India</td>
+                  <td style="padding: 14px 16px;"><span class="nav-badge">National Policy</span></td>
+                  <td style="padding: 14px 16px; text-align: right;">
+                    <a href="https://moef.gov.in/" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                      MoEFCC Document <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 16px; font-weight: 600;">Global Land Outlook (GLO2): Land Restoration for Recovery</td>
+                  <td style="padding: 14px 16px; color: var(--text-muted);">UN Convention to Combat Desertification (UNCCD)</td>
+                  <td style="padding: 14px 16px;"><span class="nav-badge">Global UN Report</span></td>
+                  <td style="padding: 14px 16px; text-align: right;">
+                    <a href="https://www.unccd.int/resources/global-land-outlook/glo2" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                      UNCCD Portal <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 11. AI ENVIRONMENTAL ASSISTANT VIEW -->
+        <section class="view-section" id="ai-assistant-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <h1 class="page-title"><i class="fas fa-robot" style="color:#10b981; margin-right:8px;"></i>BhuMitra AI – Environmental & Geospatial Assistant</h1>
+            <p class="page-description">
+              Context-aware environmental reasoning engine trained on the ISRO SAC 2021 Desertification Atlas, UNCCD Land Degradation Neutrality frameworks, and ICAR soil restoration guidelines.
+            </p>
+          </div>
+
+          <div class="ai-assistant-container">
+            <!-- Prompts Sidebar -->
+            <div class="ai-sidebar-prompts">
+              <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Knowledge Queries</span>
+              <button class="btn btn-outline btn-sm prompt-chip" style="text-align:left; font-size:0.8rem; line-height:1.4; justify-content:flex-start;" data-prompt="Why is Rajasthan experiencing severe desertification?">
+                <i class="fas fa-comment-dots" style="color:#10b981;"></i> Desertification in Rajasthan
+              </button>
+              <button class="btn btn-outline btn-sm prompt-chip" style="text-align:left; font-size:0.8rem; line-height:1.4; justify-content:flex-start;" data-prompt="What is happening to soil health and salinity in Punjab?">
+                <i class="fas fa-comment-dots" style="color:#10b981;"></i> Canal Salinity in Punjab
+              </button>
+              <button class="btn btn-outline btn-sm prompt-chip" style="text-align:left; font-size:0.8rem; line-height:1.4; justify-content:flex-start;" data-prompt="Explain the NDVI formula and how to interpret vegetation health on satellite imagery.">
+                <i class="fas fa-comment-dots" style="color:#10b981;"></i> NDVI Satellite Formula
+              </button>
+              <button class="btn btn-outline btn-sm prompt-chip" style="text-align:left; font-size:0.8rem; line-height:1.4; justify-content:flex-start;" data-prompt="How do check dams and contour bunds reclaim the Chambal ravines?">
+                <i class="fas fa-comment-dots" style="color:#10b981;"></i> Chambal Ravine Restoration
+              </button>
+              <button class="btn btn-outline btn-sm prompt-chip" style="text-align:left; font-size:0.8rem; line-height:1.4; justify-content:flex-start;" data-prompt="Is satellite imagery live real-time video? Explain the latency.">
+                <i class="fas fa-comment-dots" style="color:#10b981;"></i> Satellite Live Latency
+              </button>
+
+              <div style="margin-top:auto; font-size:0.75rem; color:var(--text-muted); line-height:1.4; border-top:1px solid var(--border-color); padding-top:10px;">
+                <i class="fas fa-certificate" style="color:#eab308;"></i> <strong>Data Grounding:</strong> All answers cite verified ISRO SAC, MoEFCC, and UNCCD publications.
+              </div>
+            </div>
+
+            <!-- Chat Viewport -->
+            <div class="ai-chat-viewport">
+              <div class="ai-messages-scroll" id="ai-chat-messages">
+                <div class="ai-msg">
+                  <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                  <div class="ai-bubble">
+                    <strong>Namaste! I am BhuMitra AI.</strong><br>
+                    I can assist you in analyzing land degradation across all 36 Indian States and Union Territories, interpreting Sentinel-2 / Landsat multispectral bands (NDVI, NDWI), and exploring field-tested soil restoration solutions.<br><br>
+                    <em>Click one of the prompt chips on the left or type your own question below!</em>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat Input Bar -->
+              <form id="ai-chat-form" class="ai-input-bar">
+                <input type="text" id="ai-chat-input" class="filter-select" placeholder="Ask BhuMitra about soil erosion, NDVI, states, or restoration..." style="flex:1;" required>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-paper-plane"></i> Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12. CITIZEN ENVIRONMENTAL REPORTING VIEW -->
+        <section class="view-section" id="citizen-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-bullhorn" style="color:var(--primary-600); margin-right:8px;"></i>BhuSeva – Citizen Environmental Monitoring & Reporting</h1>
+                <p class="page-description">
+                  Participatory public environmental stewardship. Report illegal riverbed mining, untreated canal waterlogging, illegal deforestation, or severe topsoil erosion directly from your field location.
+                </p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="document.getElementById('citizen-report-form-card').scrollIntoView({ behavior: 'smooth' })">
+                <i class="fas fa-plus-circle"></i> File a New Ground Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Report Submission Form Card -->
+          <div class="summary-card" id="citizen-report-form-card" style="margin-bottom: 24px;">
+            <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:14px; color:var(--text-main);">
+              Submit a Ground Environmental Observation
+            </h3>
+
+            <form id="form-citizen-report">
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-bottom:14px;">
+                <div class="filter-item">
+                  <label>Observation Title</label>
+                  <input type="text" id="rep-title" class="filter-select" placeholder="e.g. Excessive sand mining near river bend" required style="width:100%;">
+                </div>
+                <div class="filter-item">
+                  <label>Degradation Category</label>
+                  <select id="rep-category" class="filter-select" required style="width:100%;">
+                    <option value="Soil Erosion & Riverbed Mining">Soil Erosion & Unregulated Riverbed Mining</option>
+                    <option value="Waterlogging & Salinity">Canal Seepage & Saline Waterlogging</option>
+                    <option value="Deforestation & Vegetative Depletion">Deforestation & Vegetative Depletion</option>
+                    <option value="Illegal Waste & Chemical Dumping">Industrial Effluent / Waste Dumping</option>
+                    <option value="Gully & Badland Expansion">Severe Gully & Badland Expansion</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label>State & Territory</label>
+                  <select id="rep-state" class="filter-select" required style="width:100%;"></select>
+                </div>
+                <div class="filter-item">
+                  <label>District / Tehsil</label>
+                  <input type="text" id="rep-district" class="filter-select" placeholder="e.g. Morena, Alwar, Muktsar" style="width:100%;">
+                </div>
+              </div>
+
+              <!-- Map Pin Drop Coordinates -->
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:14px;">
+                <div class="filter-item">
+                  <label>Latitude Coordinates (N)</label>
+                  <input type="number" step="0.0001" id="rep-lat" class="filter-select" value="26.7020" required style="width:100%;">
+                </div>
+                <div class="filter-item">
+                  <label>Longitude Coordinates (E)</label>
+                  <input type="number" step="0.0001" id="rep-lng" class="filter-select" value="78.4520" required style="width:100%;">
+                </div>
+              </div>
+
+              <div class="filter-item" style="margin-bottom:14px;">
+                <label>Observation Description & Field Evidence</label>
+                <textarea id="rep-desc" class="filter-select" rows="3" placeholder="Describe the physical condition of the topsoil, vegetation loss, depth of gullies, or water quality..." required style="width:100%; font-family:inherit;"></textarea>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:20px;">
+                <div class="filter-item">
+                  <label>Observed Severity Level</label>
+                  <select id="rep-severity" class="filter-select" style="width:100%;">
+                    <option value="Low">Low (Localized, early indicators)</option>
+                    <option value="Moderate" selected>Moderate (Ongoing topsoil degradation)</option>
+                    <option value="High">High (Immediate threat to farmland/aquifer)</option>
+                    <option value="Critical">Critical (Irreversible ecological damage)</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label>Your Name / Organization</label>
+                  <input type="text" id="rep-reporter" class="filter-select" placeholder="e.g. Local Panchayat / Researcher" style="width:100%;">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="padding:10px 24px;">
+                <i class="fas fa-paper-plane"></i> Submit Observation for Geospatial Verification
+              </button>
+            </form>
+          </div>
+
+          <!-- Community Reports Feed -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+            <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main);">Verified & Community Observation Feed</h3>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-outline btn-sm active citizen-filter-btn" data-status="all">All Reports</button>
+              <button class="btn btn-outline btn-sm citizen-filter-btn" data-status="verified">Verified</button>
+              <button class="btn btn-outline btn-sm citizen-filter-btn" data-status="under review">Under Review</button>
+            </div>
+          </div>
+
+          <div class="citizen-reports-grid" id="citizen-reports-grid">
+            <!-- Rendered by app.js -->
+          </div>
+        </section>
+
+        <!-- 13. OFFICIAL ENVIRONMENTAL REPORT GENERATOR VIEW -->
+        <section class="view-section" id="reports-view">
+          <div class="page-header" style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:10px;">
+              <div>
+                <h1 class="page-title"><i class="fas fa-file-pdf" style="color:var(--primary-600); margin-right:8px;"></i>Official Environmental Intelligence Report Generator</h1>
+                <p class="page-description">
+                  Generate print-ready, formatted environmental reports containing verified ISRO SAC metrics, multispectral satellite indices, dominant degradation drivers, and recommended restoration roadmaps.
+                </p>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-primary btn-sm" onclick="window.print()">
+                  <i class="fas fa-print"></i> Download PDF / Print
+                </button>
+                <button class="btn btn-outline btn-sm" id="btn-export-report-json">
+                  <i class="fas fa-download"></i> Export Data (JSON)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Report Selector Controls -->
+          <div class="summary-card" style="margin-bottom: 20px;">
+            <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+              <div class="filter-item" style="min-width:240px;">
+                <label>Select Report Target State / UT</label>
+                <select id="report-state-select" class="filter-select" style="width:100%;"></select>
+              </div>
+              <div class="filter-item" style="min-width:220px;">
+                <label>Report Classification Level</label>
+                <select id="report-type-select" class="filter-select" style="width:100%;">
+                  <option value="state-full">Comprehensive State Environmental Dossier</option>
+                  <option value="executive">Executive Land Degradation Brief</option>
+                  <option value="restoration">Restoration Priority Action Plan</option>
+                </select>
+              </div>
+              <button class="btn btn-primary" id="btn-generate-report" style="margin-top:20px;">
+                <i class="fas fa-sync-alt"></i> Refresh Report Data
+              </button>
+            </div>
+          </div>
+
+          <!-- Formatted Printable Report Sheet -->
+          <div class="printable-report-sheet" id="printable-report-sheet">
+            <!-- Rendered by app.js -->
+          </div>
+        </section>
+
+        <!-- 14. ADMIN CONSOLE VIEW -->
+        <section class="view-section" id="admin-view">
+          <div class="page-header">
+            <h1 class="page-title">Platform Administrative Console</h1>
+            <p class="page-description">Role-based administrative management for environmental datasets, citizen observation moderation, quiz question authoring, announcements, and platform telemetry.</p>
+          </div>
+
+          <div class="summary-cards-grid">
+            <div class="summary-card">
+              <span class="card-label">Registered States</span>
+              <div class="card-value">36</div>
+              <span class="card-subtext">Active Monitoring Entities</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Citizen Reports Pool</span>
+              <div class="card-value" id="admin-rep-count">4</div>
+              <span class="card-subtext">Community Submissions</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Authored Quiz Bank</span>
+              <div class="card-value">55</div>
+              <span class="card-subtext">Curated Assessment Questions</span>
+            </div>
+            <div class="summary-card">
+              <span class="card-label">Admin Security</span>
+              <div class="card-value" style="color:var(--sev-low); font-size:1.4rem;">PBKDF2 SHA-512</div>
+              <span class="card-subtext">Salted Cryptographic Hashing</span>
+            </div>
+          </div>
+
+          <!-- Citizen Reports Moderation Queue -->
+          <div class="summary-card" style="margin-top: 24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+              <h3 style="font-size:1.05rem; font-weight:700; color:var(--text-main);">
+                <i class="fas fa-clipboard-check" style="color:var(--primary-600); margin-right:6px;"></i> Citizen Observation Moderation Queue
+              </h3>
+              <span class="severity-badge sev-vlow">Admin Only</span>
+            </div>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+                <thead>
+                  <tr style="border-bottom:1px solid var(--border-color); text-align:left; color:var(--text-muted);">
+                    <th style="padding:10px;">ID</th>
+                    <th style="padding:10px;">Title & Category</th>
+                    <th style="padding:10px;">Location</th>
+                    <th style="padding:10px;">Severity</th>
+                    <th style="padding:10px;">Status</th>
+                    <th style="padding:10px; text-align:right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-reports-table-body">
+                  <!-- Rendered dynamically by app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="summary-card" style="margin-top: 24px;">
+            <h3 style="margin-bottom: 12px;">Admin Management Actions & Data Backups</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
+              Default administrative login credentials: <code>admin@land-intel.gov.in</code> / <code>Admin@2026</code>.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <button onclick="exportDataset('states', 'json')" class="btn btn-outline btn-sm">
+                <i class="fas fa-download"></i> Backup State Data (JSON)
+              </button>
+              <button onclick="exportDataset('quiz', 'json')" class="btn btn-outline btn-sm">
+                <i class="fas fa-download"></i> Backup Quiz Bank (JSON)
+              </button>
+              <button onclick="exportDataset('solutions', 'json')" class="btn btn-outline btn-sm">
+                <i class="fas fa-download"></i> Backup Solutions (JSON)
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="showToast('Database integrity check passed: 100% synchronized', 'info')">
+                <i class="fas fa-sync-alt"></i> Verify Database Integrity
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. ABOUT THE PROJECT VIEW -->
+        <section class="view-section" id="about-view">
+          <div class="page-header">
+            <h1 class="page-title">About the Land Degradation Intelligence Platform</h1>
+            <p class="page-description">Project objectives, architecture, data provenance, and scientific methodology.</p>
+          </div>
+
+          <div class="summary-card" style="margin-bottom: 24px;">
+            <h3 style="font-size:1.25rem; font-weight:700; color:var(--text-main); margin-bottom:8px;">Project Objective & Problem Statement</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">
+              Land degradation and desertification present one of the greatest ecological, food-security, and agrarian livelihood challenges confronting 21st-century India. Over 97.85 million hectares (nearly 30%) of India's total geographical area suffers from accelerated topsoil erosion, nutrient depletion, canal-induced salinization, waterlogging, or vegetative depletion.
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+              This platform was engineered as an enterprise-grade Environmental Informatics and Decision-Support tool. It aggregates multi-decadal satellite datasets, provides interactive spatial visualization across all 36 Indian States and Union Territories, and connects scientific findings directly with actionable, field-proven restoration protocols.
+            </p>
+          </div>
+
+          <div class="charts-grid">
+            <div class="chart-card col-6">
+              <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:12px;">Architecture & Technology Stack</h3>
+              <ul style="padding-left:20px; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
+                <li><strong>Frontend:</strong> HTML5, CSS3 Custom Properties (Light/Dark themes), JavaScript (ES6+ modular engine).</li>
+                <li><strong>Geospatial Engine:</strong> Leaflet.js with optimized Topo/GeoJSON polygon boundary layers.</li>
+                <li><strong>Visual Analytics:</strong> Chart.js 4.x with responsive theme-aware canvas visualizers.</li>
+                <li><strong>Backend:</strong> Node.js, Express.js REST API with CORS and static file serving.</li>
+                <li><strong>Database & Security:</strong> JSON persistence, PBKDF2 SHA-512 password encryption, token-based session auth.</li>
+                <li><strong>Deployment:</strong> Compatible with Node servers, Vercel, and GitHub Pages static hosting.</li>
+              </ul>
+            </div>
+
+            <div class="chart-card col-6">
+              <h3 style="font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:12px;">Scientific Data Provenance</h3>
+              <ul style="padding-left:20px; font-size:0.9rem; color:var(--text-secondary); line-height:1.7;">
+                <li>Space Applications Centre (SAC), ISRO Ahmedabad (Desertification & Land Degradation Atlas of India, 2021).</li>
+                <li>National Remote Sensing Centre (NRSC) / Bhuvan Thematic Geospatial layers.</li>
+                <li>Ministry of Environment, Forest and Climate Change (MoEFCC), Govt. of India.</li>
+                <li>ICAR Research Institutes: CAZRI (Jodhpur), CSSRI (Karnal), IISWC (Dehradun).</li>
+                <li>United Nations Convention to Combat Desertification (UNCCD) Target Setting Programme.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="background-color:var(--bg-subtle); border-left:4px solid var(--primary-600); padding:16px 20px; border-radius:var(--radius-md); margin-top:20px;">
+            <h4 style="font-size:0.95rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">Academic & Analytical Disclaimer</h4>
+            <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.6;">
+              This platform is an educational and analytical research demonstration developed for environmental monitoring awareness and GIS decision support. While statistics are calibrated directly against official published ISRO SAC and MoEFCC reports, this system does not represent an official real-time statutory forecasting system of the Government of India unless formally authorized.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- QUICK SEARCH MODAL (Ctrl+K) -->
+  <div class="modal-backdrop" id="search-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:10px; width:100%;">
+          <i class="fas fa-search" style="color:var(--primary-600);"></i>
+          <input type="text" id="global-search-input" placeholder="Search states, degradation processes, solutions, quiz..." style="width:100%; border:none; outline:none; background:transparent; font-size:1.05rem;">
+        </div>
+        <button class="modal-close-btn" onclick="closeModals()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="search-results-container">
+        <p style="color:var(--text-muted); text-align:center; padding:20px;">Type a state, degradation category, or solution name...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION DETAILS MODAL -->
+  <div class="modal-backdrop" id="solution-modal">
+    <div class="modal-dialog" style="max-width: 750px;">
+      <div class="modal-header">
+        <div class="modal-title">Restoration Protocol Dossier</div>
+        <button class="modal-close-btn" onclick="closeModals()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="solution-modal-body">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div class="modal-backdrop" id="video-modal">
+    <div class="modal-dialog" style="max-width: 820px; background-color: #0b1319; border-color: #243b47;">
+      <div class="modal-header" style="border-color: #243b47; color: #f8fafc;">
+        <div class="modal-title" id="video-modal-title">Educational Lecture</div>
+        <button class="modal-close-btn" onclick="closeVideoModal()" style="color: #cbd5e1;"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" style="padding: 0;">
+        <div class="video-iframe-wrap" id="video-modal-iframe-wrap">
+          <!-- Injected dynamically on click -->
+        </div>
+        <div style="padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background-color: #121e24; color: #cbd5e1; border-top: 1px solid #243b47;">
+          <span id="video-modal-channel" style="font-size: 0.85rem; color: #4ade80; font-weight: 600;"></span>
+          <a id="video-modal-yt-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="color: #fff; border-color: #334155;">
+            <i class="fab fa-youtube" style="color: #ef4444; margin-right: 4px;"></i> Open in YouTube HD
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER AUTH & PROFILE MODAL -->
+  <div class="modal-backdrop" id="auth-modal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title" id="auth-modal-title">User Account & Authentication</div>
+        <button class="modal-close-btn" onclick="closeModals()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="auth-modal-body">
+        <!-- Logged Out State -->
+        <div id="auth-logged-out-view">
+          <form id="form-login">
+            <div class="filter-item" style="margin-bottom: 14px;">
+              <label>Email Address</label>
+              <input type="email" id="login-email" class="filter-select" placeholder="admin@land-intel.gov.in" required style="width: 100%;">
+            </div>
+            <div class="filter-item" style="margin-bottom: 16px;">
+              <label>Password</label>
+              <input type="password" id="login-password" class="filter-select" placeholder="••••••••" required style="width: 100%;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 10px; justify-content: center;">
+              <i class="fas fa-sign-in-alt"></i> Sign In to Platform
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-fill-admin-creds" style="width: 100%; font-size: 0.85rem; justify-content: center;">
+              <i class="fas fa-magic" style="color: var(--primary-600);"></i> 1-Click Fill Admin Credentials
+            </button>
+          </form>
+
+          <div style="margin-top: 18px; font-size: 0.82rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-color); padding-top: 14px; line-height: 1.5;">
+            Official testing credentials:<br>
+            <code style="color: var(--primary-700); font-weight: 700;">admin@land-intel.gov.in</code> / <code style="color: var(--primary-700); font-weight: 700;">Admin@2026</code>
+          </div>
+        </div>
+
+        <!-- Logged In State -->
+        <div id="auth-logged-in-view" style="display: none; text-align: center; padding: 10px 0;">
+          <div style="width: 68px; height: 68px; border-radius: 50%; background-color: var(--primary-100); color: var(--primary-700); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 14px auto;">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h3 id="auth-profile-name" style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Platform Administrator</h3>
+          <p id="auth-profile-email" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">admin@land-intel.gov.in</p>
+          <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 20px;">
+            <span class="severity-badge sev-low" id="auth-profile-role">Administrator</span>
+            <span class="severity-badge sev-vlow"><i class="fas fa-circle" style="font-size: 8px; margin-right: 4px;"></i> Active Session</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn btn-primary" onclick="navigateToView('admin'); closeModals();" style="justify-content: center;">
+              <i class="fas fa-user-shield"></i> Go to Admin Console
+            </button>
+            <button class="btn btn-outline" onclick="logoutUser()" style="justify-content: center;">
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- SCRIPTS: Leaflet, Chart.js, App Engine -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

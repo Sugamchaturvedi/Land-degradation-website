@@ -1,0 +1,23 @@
+{
+  "name": "LandWatch India - Satellite Intelligence & Environmental Monitoring",
+  "short_name": "LandWatch India",
+  "description": "Satellite Earth Observation, Geospatial Analytics & Land Degradation Intelligence Platform for India",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1319",
+  "theme_color": "#15803d",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/893/893505.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/893/893505.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "environment", "productivity", "utilities"]
+}

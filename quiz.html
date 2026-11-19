@@ -1,222 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land Degradation Quiz</title>
-    <style>
-        /* Basic styling for the quiz layout */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f4f8;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Degradation Assessment - Environmental Quiz</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'><path d='M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z'/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        header {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-
-        main {
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1, h2 {
-            text-align: center;
-        }
-
-        .question {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .options {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .options li {
-            margin-bottom: 10px;
-        }
-
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .feedback {
-            font-weight: bold;
-            color: #2d2d2d;
-            margin-top: 10px;
-        }
-
-        .feedback.correct {
-            color: green;
-        }
-
-        .feedback.incorrect {
-            color: red;
-        }
-
-        #score {
-            margin-top: 20px;
-            font-size: 1.2em;
-            text-align: center;
-            color: #333;
-        }
-    </style>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .option-card:hover { border-color: #16a34a; background-color: #f0fdf4; }
+    .option-card.selected { border-color: #16a34a; background-color: #dcfce7; font-weight: 600; }
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Land Degradation Quiz</h1>
-    </header>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
-    <main>
-        <h2>Test your knowledge on land degradation</h2>
+  <header class="bg-emerald-800 text-white shadow sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white text-xl">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight">Environmental Assessment Hub</h1>
+          <p class="text-xs text-emerald-200">55 Questions &bull; 5 Specialized Tracks &bull; Verified Answers</p>
+        </div>
+      </div>
+      <nav>
+        <ul class="flex gap-6 text-sm font-semibold">
+          <li><a class="hover:text-emerald-300" href="index.html#overview"><i class="fas fa-chart-pie mr-1"></i> Full Platform</a></li>
+          <li><a class="hover:text-emerald-300" href="Layout8MAIN.html"><i class="fas fa-map mr-1"></i> GIS Map</a></li>
+          <li><a class="hover:text-emerald-300" href="knowledge.html"><i class="fas fa-book-reader mr-1"></i> Knowledge Base</a></li>
+          <li><a class="text-emerald-300 font-bold underline" href="quiz.html"><i class="fas fa-check-circle mr-1"></i> Take Quiz</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div id="quiz-container"></div>
-        <button onclick="submitQuiz()">Submit Quiz</button>
-        
-        <div id="score"></div>
-    </main>
+  <main class="container mx-auto px-4 py-8 flex-1 max-w-3xl">
+    
+    <!-- Setup Screen -->
+    <div id="quiz-setup" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm text-center">
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto mb-4">
+        <i class="fas fa-award"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold text-gray-900 mb-2">Test Your Environmental Knowledge</h2>
+      <p class="text-gray-600 text-sm max-w-lg mx-auto mb-6">
+        Challenge yourself on soil erosion, desertification, soil chemistry, and the Bonn Challenge. Answer one question at a time with instant feedback and review.
+      </p>
 
-    <script>
-        const questions = [
-            // 50 Questions pool with question structure
-            { question: "What is a common cause of land degradation in India?", options: ["Urbanization", "Deforestation", "Industrialization"], answer: "Deforestation" },
-    { question: "Which method is effective in preventing soil erosion?", options: ["Overgrazing", "Monoculture", "Afforestation"], answer: "Afforestation" },
-    { question: "Which state in India is most affected by desertification?", options: ["Rajasthan", "Kerala", "Sikkim"], answer: "Rajasthan" },
-    { question: "What process involves the removal of topsoil by natural forces?", options: ["Erosion", "Deforestation", "Urbanization"], answer: "Erosion" },
-    { question: "What type of farming can lead to soil degradation if overused?", options: ["Organic Farming", "Monoculture", "Agroforestry"], answer: "Monoculture" },
-    { question: "Which practice helps in water conservation and reduces soil erosion?", options: ["Afforestation", "Industrialization", "Urban Sprawl"], answer: "Afforestation" },
-    { question: "Which gas is a major contributor to global warming?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen"], answer: "Carbon Dioxide" },
-    { question: "What is the primary cause of desertification?", options: ["Deforestation", "Overgrazing", "Urbanization"], answer: "Overgrazing" },
-    { question: "Which region is highly vulnerable to soil erosion in India?", options: ["Himalayas", "Deserts", "Plains"], answer: "Himalayas" },
-    { question: "Which element is essential for plant growth but depleted by intensive farming?", options: ["Nitrogen", "Lead", "Sulfur"], answer: "Nitrogen" },
-    { question: "Which farming technique involves rotating crops to maintain soil fertility?", options: ["Crop Rotation", "Slash and Burn", "Deforestation"], answer: "Crop Rotation" },
-    { question: "What is a major effect of deforestation?", options: ["Increased biodiversity", "Soil erosion", "Soil improvement"], answer: "Soil erosion" },
-    { question: "What type of land management can reduce desertification?", options: ["Sustainable Agriculture", "Industrialization", "Mining"], answer: "Sustainable Agriculture" },
-    { question: "Which state is known for severe coastal erosion?", options: ["Kerala", "Punjab", "Uttarakhand"], answer: "Kerala" },
-    { question: "Which land management technique can help prevent landslides?", options: ["Terracing", "Grazing", "Mining"], answer: "Terracing" },
-    { question: "What effect does over-irrigation have on soil?", options: ["Improves fertility", "Leads to waterlogging and salinity", "Promotes erosion"], answer: "Leads to waterlogging and salinity" },
-    { question: "Which farming practice helps reduce land degradation?", options: ["Shifting Cultivation", "Sustainable Farming", "Monoculture"], answer: "Sustainable Farming" },
-    { question: "What is a benefit of agroforestry?", options: ["Increased deforestation", "Enhanced biodiversity", "Increased soil salinity"], answer: "Enhanced biodiversity" },
-    { question: "What kind of pollution contributes to acid rain?", options: ["Carbon Dioxide", "Sulfur Dioxide", "Nitrogen"], answer: "Sulfur Dioxide" },
-    { question: "Which of these is a consequence of mining?", options: ["Soil fertility improvement", "Land degradation", "Increased forest cover"], answer: "Land degradation" },
-    { question: "What method can prevent soil compaction?", options: ["Overgrazing", "Crop Rotation", "Heavy machinery use"], answer: "Crop Rotation" },
-    { question: "How does afforestation help degraded land?", options: ["Increases soil erosion", "Reduces water retention", "Restores vegetation"], answer: "Restores vegetation" },
-    { question: "Which factor most contributes to soil erosion on hill slopes?", options: ["Terracing", "Deforestation", "Afforestation"], answer: "Deforestation" },
-    { question: "What is a direct cause of soil salinization?", options: ["Deforestation", "Over-irrigation", "Crop Rotation"], answer: "Over-irrigation" },
-    { question: "Which farming method is best for maintaining soil health?", options: ["Monoculture", "Crop Rotation", "Shifting Cultivation"], answer: "Crop Rotation" },
-    { question: "What causes the loss of soil fertility over time?", options: ["Overuse of fertilizers", "Organic farming", "Agroforestry"], answer: "Overuse of fertilizers" },
-    { question: "What is a natural way to prevent erosion in coastal areas?", options: ["Urbanization", "Planting mangroves", "Mining"], answer: "Planting mangroves" },
-    { question: "Which type of erosion is common in mountainous regions?", options: ["Sheet Erosion", "Gully Erosion", "Landslide Erosion"], answer: "Landslide Erosion" },
-    { question: "What does 'overgrazing' lead to?", options: ["Improved soil fertility", "Soil degradation", "Enhanced forest cover"], answer: "Soil degradation" },
-    { question: "What causes the phenomenon of 'urban sprawl'?", options: ["Population decrease", "Overgrazing", "Rapid urban expansion"], answer: "Rapid urban expansion" },
-    { question: "Which agricultural practice uses excessive water and often leads to salinization?", options: ["Agroforestry", "Rain-fed farming", "Over-irrigation"], answer: "Over-irrigation" },
-    { question: "Which practice reduces soil erosion on steep slopes?", options: ["Contour farming", "Clear-cutting", "Overgrazing"], answer: "Contour farming" },
-    { question: "Which of these is a direct effect of soil erosion?", options: ["Improved soil structure", "Loss of soil fertility", "Increased biodiversity"], answer: "Loss of soil fertility" },
-    { question: "What impact does deforestation have on climate?", options: ["Cools the region", "Contributes to global warming", "Reduces air pollution"], answer: "Contributes to global warming" },
-    { question: "Which farming technique uses trees to help preserve soil?", options: ["Agroforestry", "Monoculture", "Overgrazing"], answer: "Agroforestry" },
-    { question: "What is a common source of chemical soil pollution?", options: ["Industrial waste", "Agroforestry", "Contour plowing"], answer: "Industrial waste" },
-    { question: "Which crop rotation practice benefits soil nutrients?", options: ["Same crop every year", "Alternate legume and cereal crops", "Shifting cultivation"], answer: "Alternate legume and cereal crops" },
-    { question: "How can terracing benefit hilly agriculture?", options: ["Increases erosion", "Reduces water runoff", "Destroys vegetation"], answer: "Reduces water runoff" },
-    { question: "What can excessive use of pesticides lead to?", options: ["Soil fertility improvement", "Soil and water contamination", "Increased biodiversity"], answer: "Soil and water contamination" },
-    { question: "Which factor most contributes to land subsidence?", options: ["Groundwater over-extraction", "Afforestation", "Crop Rotation"], answer: "Groundwater over-extraction" },
-    { question: "Which erosion type removes a uniform layer of soil?", options: ["Sheet Erosion", "Gully Erosion", "Rill Erosion"], answer: "Sheet Erosion" },
-    { question: "What is a natural method for controlling wind erosion?", options: ["Deforestation", "Windbreaks", "Overgrazing"], answer: "Windbreaks" },
-    { question: "Which sustainable practice involves planting cover crops?", options: ["Afforestation", "Cover cropping", "Monoculture"], answer: "Cover cropping" },
-    { question: "What is a consequence of shifting cultivation?", options: ["Enhanced soil quality", "Increased forest cover", "Land degradation"], answer: "Land degradation" },
-    { question: "How does overuse of fertilizers affect soil?", options: ["Decreases acidity", "Enhances organic matter", "Causes nutrient imbalance"], answer: "Causes nutrient imbalance" },
-    { question: "What is a major consequence of groundwater depletion?", options: ["Improved soil fertility", "Increased land subsidence", "Enhanced rainfall"], answer: "Increased land subsidence" },
-    { question: "Which farming method reduces water use in dry areas?", options: ["Flood irrigation", "Drip irrigation", "Over-irrigation"], answer: "Drip irrigation" },
-    { question: "What is a direct consequence of riverbank erosion?", options: ["Increased soil fertility", "Loss of river habitats", "Formation of deserts"], answer: "Loss of river habitats" }
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-left">
+        <div>
+          <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Topic</label>
+          <select id="select-topic" class="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm outline-none focus:border-emerald-600">
+            <option value="all">All Topics (Comprehensive)</option>
+            <option value="Soil Erosion & Mechanics">Soil Erosion & Mechanics</option>
+            <option value="Desertification & Arid Lands">Desertification & Arid Lands</option>
+            <option value="Salinity, Sodicity & Waterlogging">Salinity, Sodicity & Waterlogging</option>
+            <option value="Deforestation & Mining">Deforestation & Mining</option>
+            <option value="Restoration, Policy & Bonn Challenge">Restoration, Policy & Bonn Challenge</option>
+          </select>
+        </div>
 
-        ];
+        <div>
+          <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Difficulty</label>
+          <select id="select-diff" class="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm outline-none focus:border-emerald-600">
+            <option value="all">Mixed (Easy to Hard)</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
 
-        let currentIndex = 0;
-        let score = 0;
-        const questionsPerRound = 5;
+        <div>
+          <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Number of Questions</label>
+          <select id="select-count" class="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-sm outline-none focus:border-emerald-600">
+            <option value="5">5 Questions (Quick)</option>
+            <option value="10" selected>10 Questions (Standard)</option>
+            <option value="15">15 Questions (Thorough)</option>
+            <option value="55">All 55 Questions</option>
+          </select>
+        </div>
+      </div>
 
-        function loadQuestions() {
-            const quizContainer = document.getElementById('quiz-container');
-            quizContainer.innerHTML = '';
-            
-            for (let i = currentIndex; i < currentIndex + questionsPerRound && i < questions.length; i++) {
-                const questionBlock = document.createElement('div');
-                questionBlock.classList.add('question');
-                
-                const questionData = questions[i];
-                
-                questionBlock.innerHTML = `
-                    <p><strong>${i + 1}. ${questionData.question}</strong></p>
-                    <ul class="options">
-                        ${questionData.options.map(option => `<li><input type="radio" name="q${i}" value="${option}"> ${option}</li>`).join('')}
-                    </ul>
-                    <div class="feedback"></div>
-                `;
-                
-                quizContainer.appendChild(questionBlock);
-            }
-        }
+      <button onclick="startQuiz()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-base shadow transition-all">
+        <i class="fas fa-play mr-2"></i> Start Assessment
+      </button>
+    </div>
 
-        function submitQuiz() {
-            const questionsContainer = document.querySelectorAll('.question');
-            questionsContainer.forEach((questionBlock, index) => {
-                const selectedOption = questionBlock.querySelector('input[type="radio"]:checked');
-                const feedback = questionBlock.querySelector('.feedback');
-                
-                const questionData = questions[currentIndex + index];
-                if (selectedOption) {
-                    if (selectedOption.value === questionData.answer) {
-                        score++;
-                        feedback.textContent = 'Correct!';
-                        feedback.className = 'feedback correct';
-                    } else {
-                        feedback.textContent = 'Incorrect!';
-                        feedback.className = 'feedback incorrect';
-                    }
-                } else {
-                    feedback.textContent = 'No answer selected!';
-                    feedback.className = 'feedback incorrect';
-                }
-            });
+    <!-- Active Quiz Screen -->
+    <div id="quiz-active" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-md hidden">
+      <!-- Progress Bar -->
+      <div class="w-full bg-gray-100 rounded-full h-2 mb-6 overflow-hidden">
+        <div id="progress-bar-fill" class="bg-emerald-600 h-2 transition-all duration-300" style="width: 10%;"></div>
+      </div>
 
-            currentIndex += questionsPerRound;
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <span id="question-counter" class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Question 1 of 10</span>
+          <div class="flex gap-2 mt-1">
+            <span id="badge-topic" class="px-2 py-0.5 bg-emerald-50 text-emerald-800 text-xs font-semibold rounded">Soil Erosion</span>
+            <span id="badge-diff" class="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">Medium</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-1 bg-red-50 text-red-600 rounded-full text-xs font-bold">
+          <i class="fas fa-stopwatch"></i>
+          <span id="timer-display">00:00</span>
+        </div>
+      </div>
 
-            if (currentIndex < questions.length) {
-                setTimeout(() => {
-                    loadQuestions();
-                    document.getElementById('score').textContent = `Current Score: ${score}`;
-                }, 1000);
-            } else {
-                document.getElementById('score').textContent = `Final Score: ${score} out of ${questions.length}`;
-                document.querySelector('button').disabled = true;
-            }
-        }
+      <h3 id="question-text" class="text-xl font-bold text-gray-900 mb-6 leading-snug">Question text here?</h3>
 
-        window.onload = loadQuestions;
-    </script>
+      <div id="options-container" class="space-y-3 mb-8">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+        <button id="btn-prev" onclick="prevQuestion()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50">
+          <i class="fas fa-arrow-left mr-1"></i> Previous
+        </button>
+        <button id="btn-next" onclick="nextQuestion()" class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-semibold">
+          Next Question <i class="fas fa-arrow-right ml-1"></i>
+        </button>
+        <button id="btn-submit" onclick="submitQuiz()" class="px-6 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-sm font-bold hidden">
+          <i class="fas fa-check-double mr-1"></i> Submit Quiz
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="quiz-results" class="bg-white rounded-2xl p-8 border border-gray-200 shadow-md text-center hidden">
+      <div class="w-24 h-24 rounded-full bg-emerald-100 text-emerald-700 flex flex-col items-center justify-center mx-auto mb-4 border-4 border-emerald-500">
+        <span id="score-pct" class="text-2xl font-black">80%</span>
+        <span class="text-xs font-bold uppercase tracking-wider">Score</span>
+      </div>
+
+      <h2 id="score-rank-title" class="text-2xl font-extrabold text-gray-900 mb-1">Master Environmentalist</h2>
+      <p class="text-gray-600 text-sm mb-6">
+        You answered <strong id="score-text">8 out of 10</strong> questions correctly.
+      </p>
+
+      <div class="flex justify-center gap-4 mb-8">
+        <button onclick="resetQuiz()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-bold">
+          <i class="fas fa-redo mr-2"></i> Retake Quiz
+        </button>
+        <a href="index.html#overview" class="px-6 py-2.5 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg text-sm font-semibold">
+          <i class="fas fa-home mr-2"></i> Main Dashboard
+        </a>
+      </div>
+
+      <div class="text-left">
+        <h3 class="text-lg font-bold text-gray-900 pb-2 border-b border-gray-200 mb-4">Detailed Scientific Review</h3>
+        <div id="review-container" class="space-y-4"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-emerald-950 text-emerald-300 py-4 text-center text-xs">
+    <p>&copy; 2026 Land Degradation Intelligence Platform - India</p>
+  </footer>
+
+  <script>
+    let questionsPool = [];
+    let activeQuestions = [];
+    let currentIndex = 0;
+    let selectedAnswers = {};
+    let timerInterval = null;
+    let secondsSpent = 0;
+
+    // Load questions from quiz_questions.json
+    fetch('quiz_questions.json')
+      .then(res => res.json())
+      .then(data => { questionsPool = data; })
+      .catch(err => console.error('Failed to load questions:', err));
+
+    function startQuiz() {
+      let topic = document.getElementById('select-topic').value;
+      let diff = document.getElementById('select-diff').value;
+      let count = parseInt(document.getElementById('select-count').value) || 10;
+
+      let filtered = [...questionsPool];
+      if (topic !== 'all') filtered = filtered.filter(q => q.topic.toLowerCase() === topic.toLowerCase());
+      if (diff !== 'all') filtered = filtered.filter(q => q.difficulty.toLowerCase() === diff.toLowerCase());
+
+      // Shuffle
+      for (let i = filtered.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+      }
+
+      activeQuestions = filtered.slice(0, count);
+      currentIndex = 0;
+      selectedAnswers = {};
+      secondsSpent = 0;
+
+      if (activeQuestions.length === 0) {
+        alert('No questions found for the selected combination.');
+        return;
+      }
+
+      document.getElementById('quiz-setup').classList.add('hidden');
+      document.getElementById('quiz-results').classList.add('hidden');
+      document.getElementById('quiz-active').classList.remove('hidden');
+
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        secondsSpent++;
+        let m = String(Math.floor(secondsSpent / 60)).padStart(2, '0');
+        let s = String(secondsSpent % 60).padStart(2, '0');
+        document.getElementById('timer-display').textContent = `${m}:${s}`;
+      }, 1000);
+
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      let q = activeQuestions[currentIndex];
+      let total = activeQuestions.length;
+
+      document.getElementById('question-counter').textContent = `Question ${currentIndex + 1} of ${total}`;
+      document.getElementById('badge-topic').textContent = q.topic;
+      document.getElementById('badge-diff').textContent = q.difficulty;
+      document.getElementById('question-text').textContent = q.question;
+      document.getElementById('progress-bar-fill').style.width = `${((currentIndex + 1) / total) * 100}%`;
+
+      let selected = selectedAnswers[q.id];
+      let html = '';
+      q.options.forEach((opt, idx) => {
+        let isSel = selected === idx;
+        html += `
+          <div class="option-card p-4 border rounded-xl cursor-pointer transition-all flex items-center gap-3 ${isSel ? 'selected' : 'border-gray-200'}" onclick="pickOption(${q.id}, ${idx})">
+            <div class="w-5 h-5 rounded-full border-2 ${isSel ? 'border-emerald-600 bg-emerald-600' : 'border-gray-300'} flex items-center justify-center">
+              ${isSel ? '<div class="w-2 h-2 rounded-full bg-white"></div>' : ''}
+            </div>
+            <span class="text-sm font-medium text-gray-800">${opt}</span>
+          </div>
+        `;
+      });
+      document.getElementById('options-container').innerHTML = html;
+
+      document.getElementById('btn-prev').disabled = currentIndex === 0;
+
+      if (currentIndex === total - 1) {
+        document.getElementById('btn-next').classList.add('hidden');
+        document.getElementById('btn-submit').classList.remove('hidden');
+      } else {
+        document.getElementById('btn-next').classList.remove('hidden');
+        document.getElementById('btn-submit').classList.add('hidden');
+      }
+    }
+
+    function pickOption(qId, optIdx) {
+      selectedAnswers[qId] = optIdx;
+      renderQuestion();
+    }
+
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      let currentQ = activeQuestions[currentIndex];
+      if (selectedAnswers[currentQ.id] === undefined) {
+        alert('Please choose an answer before proceeding.');
+        return;
+      }
+      if (currentIndex < activeQuestions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    function submitQuiz() {
+      let currentQ = activeQuestions[currentIndex];
+      if (selectedAnswers[currentQ.id] === undefined) {
+        alert('Please choose an answer before submitting.');
+        return;
+      }
+
+      clearInterval(timerInterval);
+
+      let score = 0;
+      let reviewHtml = '';
+
+      activeQuestions.forEach((q, idx) => {
+        let picked = selectedAnswers[q.id];
+        let isCorrect = picked === q.correct;
+        if (isCorrect) score++;
+
+        reviewHtml += `
+          <div class="p-4 rounded-xl border ${isCorrect ? 'border-green-300 bg-green-50/40' : 'border-red-300 bg-red-50/40'}">
+            <div class="flex justify-between text-xs font-bold mb-1">
+              <span class="text-gray-700">Question ${idx + 1}</span>
+              <span class="${isCorrect ? 'text-green-700' : 'text-red-700'}">${isCorrect ? '✓ Correct' : '✗ Incorrect'}</span>
+            </div>
+            <h4 class="font-bold text-sm text-gray-900 mb-2">${q.question}</h4>
+            <div class="text-xs text-gray-600 mb-1">Your answer: <strong>${picked !== undefined ? q.options[picked] : 'Not answered'}</strong></div>
+            ${!isCorrect ? `<div class="text-xs text-green-700 mb-1">Correct answer: <strong>${q.options[q.correct]}</strong></div>` : ''}
+            <div class="mt-2 text-xs bg-white p-2.5 rounded-lg border border-gray-200 text-gray-600">
+              <strong>Scientific Explanation:</strong> ${q.explanation}
+            </div>
+          </div>
+        `;
+      });
+
+      let total = activeQuestions.length;
+      let pct = Math.round((score / total) * 100);
+
+      document.getElementById('score-pct').textContent = `${pct}%`;
+      document.getElementById('score-text').textContent = `${score} out of ${total}`;
+      
+      let badge = 'Novice Conservator';
+      if (pct >= 80) badge = 'Master Environmentalist 🎖️';
+      else if (pct >= 60) badge = 'Informed Ecologist 🌿';
+      document.getElementById('score-rank-title').textContent = badge;
+
+      document.getElementById('review-container').innerHTML = reviewHtml;
+
+      document.getElementById('quiz-active').classList.add('hidden');
+      document.getElementById('quiz-results').classList.remove('hidden');
+    }
+
+    function resetQuiz() {
+      document.getElementById('quiz-results').classList.add('hidden');
+      document.getElementById('quiz-setup').classList.remove('hidden');
+    }
+  </script>
+
 </body>
 </html>

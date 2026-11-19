@@ -1,0 +1,90 @@
+[
+  {
+    "id": "news-1",
+    "title": "MoEFCC Reaffirms India's Bonn Challenge Pledge: 26 Million Hectares Target by 2030",
+    "date": "2024-03-12",
+    "category": "Policy & National Missions",
+    "source": "Ministry of Environment, Forest and Climate Change / PIB New Delhi",
+    "summary": "India has reaffirmed its commitment under the Bonn Challenge and UNCCD COP14 New Delhi Declaration to bring 26 million hectares of degraded and deforested land into active restoration by 2030, leveraging integrated schemes like PMKSY, Green India Mission, and Nagar Van Yojana.",
+    "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=1858349",
+    "tags": [
+      "Bonn Challenge",
+      "UNCCD",
+      "MoEFCC",
+      "Restoration"
+    ]
+  },
+  {
+    "id": "news-2",
+    "title": "ISRO Space Applications Centre Releases Updated Geospatial Desertification & Land Degradation Atlas",
+    "date": "2023-11-20",
+    "category": "Geospatial Intelligence",
+    "source": "Space Applications Centre (SAC), ISRO Ahmedabad",
+    "summary": "ISRO SAC published comprehensive multi-temporal satellite analyses indicating 97.85 million hectares (29.77% of India's TGA) undergo various land degradation processes, with water erosion and vegetation loss continuing to be dominant drivers across peninsular and central states.",
+    "url": "https://www.sac.gov.in/Vyom/SACDesertification.jsp",
+    "tags": [
+      "ISRO",
+      "Remote Sensing",
+      "Land Degradation Atlas",
+      "Bhuvan"
+    ]
+  },
+  {
+    "id": "news-3",
+    "title": "G20 Global Land Initiative Advances Collaborative Restoration Frameworks across South Asia",
+    "date": "2024-01-18",
+    "category": "International Cooperation",
+    "source": "UNCCD / G20 Land Initiative Secretariat",
+    "summary": "Building upon India's G20 Presidency priorities, the G20 Global Land Initiative launched capacity-building workshops on mining land rehabilitation, community forestry, and satellite-based land productivity monitoring for state forest departments.",
+    "url": "https://www.unccd.int/g20-global-land-initiative",
+    "tags": [
+      "G20",
+      "Global Land Initiative",
+      "Capacity Building"
+    ]
+  },
+  {
+    "id": "news-4",
+    "title": "World Bank & Government of India Expand REWARD Project across Semi-Arid Watersheds",
+    "date": "2023-09-05",
+    "category": "Projects & Investments",
+    "source": "World Bank / Department of Land Resources (DoLR)",
+    "summary": "The Rejuvenating Watersheds for Agricultural Resilience through Innovative Development (REWARD) project expanded across Karnataka and Odisha, deploying high-resolution digital soil health maps and climate-resilient water harvesting protocols.",
+    "url": "https://www.worldbank.org/en/news/press-release/2022/02/18/world-bank-funds-reward-watershed-project",
+    "tags": [
+      "World Bank",
+      "REWARD",
+      "Watershed",
+      "Odisha",
+      "Karnataka"
+    ]
+  },
+  {
+    "id": "news-5",
+    "title": "ICAR-CSSRI Deploys Solar Sub-Surface Drainage Across Waterlogged Canal Commands in Haryana & Punjab",
+    "date": "2024-02-14",
+    "category": "Scientific Innovation",
+    "source": "ICAR Central Soil Salinity Research Institute, Karnal",
+    "summary": "ICAR-CSSRI inaugurated new solar-powered sub-surface drainage (SSD) installations across 15,000 hectares of waterlogged saline agricultural farmland in Rohtak and Muktsar, achieving full root-zone salt evacuation within two cropping seasons.",
+    "url": "https://cssri.res.in/",
+    "tags": [
+      "CSSRI",
+      "Salinity Reclamation",
+      "Sub-Surface Drainage"
+    ]
+  },
+  {
+    "id": "news-6",
+    "title": "Green Wall of India Initiative Commences Initial Phase Across Aravalli Ecological Corridor",
+    "date": "2023-12-10",
+    "category": "Afforestation & Biodiversity",
+    "source": "Forest Departments of Haryana, Rajasthan, Gujarat",
+    "summary": "Initial greening operations commenced along critical gaps in the Aravalli mountain belt covering southern Haryana and northeastern Rajasthan to halt the eastward drift of sand particles and recharge the National Capital Region's underground water aquifers.",
+    "url": "https://moef.gov.in/",
+    "tags": [
+      "Green Wall of India",
+      "Aravalli",
+      "Sand Dune Barrier"
+    ]
+  }
+]

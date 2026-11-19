@@ -1,0 +1,27 @@
+{
+  "name": "land-degradation-intelligence-platform-india",
+  "version": "2.4.0",
+  "description": "Professional Land Degradation Intelligence & Environmental Monitoring Platform for India",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test_platform.js"
+  },
+  "keywords": [
+    "land-degradation",
+    "india",
+    "environmental-monitoring",
+    "isro-sac",
+    "gis",
+    "leaflet",
+    "chartjs",
+    "climate-intelligence"
+  ],
+  "author": "Environmental Informatics Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

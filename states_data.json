@@ -1,0 +1,1707 @@
+[
+  {
+    "id": "rajasthan",
+    "name": "Rajasthan",
+    "type": "State",
+    "region": "Northern / Western",
+    "capital": "Jaipur",
+    "total_area_mha": 34.22,
+    "degraded_area_mha": 21.23,
+    "degraded_pct": 62.04,
+    "trend_pct_change": 0.42,
+    "historical_pct": {
+      "2003_05": 61.45,
+      "2011_13": 61.62,
+      "2018_19": 62.04
+    },
+    "dominant_processes": [
+      {
+        "type": "Wind Erosion",
+        "pct": 44.41,
+        "area_mha": 15.2
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 9.25,
+        "area_mha": 3.17
+      },
+      {
+        "type": "Salinity / Alkalinity",
+        "pct": 3.42,
+        "area_mha": 1.17
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 4.96,
+        "area_mha": 1.7
+      }
+    ],
+    "severity": "Extreme",
+    "primary_causes": [
+      "Aridity and hyper-arid climate in Thar Desert",
+      "Overgrazing by high livestock density",
+      "Depletion of deep fossil groundwater",
+      "Wind deflation of active sand dunes"
+    ],
+    "environmental_impact": "Accelerated sand dune migration towards canal command areas; loss of indigenous scrub ecosystems; recurring severe droughts.",
+    "prevention_measures": "Shelterbelt plantations using Prosopis cineraria (Khejri) and Acacia tortilis; sand dune stabilization with micro-windbreaks; pressurized drip irrigation along Indira Gandhi Canal; silvopastoral grazing management.",
+    "active_schemes": [
+      "Desert Development Programme (DDP)",
+      "Green Wall of India Project (Aravalli Range)",
+      "PMKSY (Per Drop More Crop)",
+      "Mukhyamantri Jal Swavlamban Abhiyan"
+    ],
+    "data_source": "ISRO Space Applications Centre (SAC) Desertification Atlas 2021",
+    "source_year": "2021 (Imagery cycle 2018-19)",
+    "methodology": "IRS AWiFS satellite remote sensing, ground truth verification by CAZRI Jodhpur"
+  },
+  {
+    "id": "maharashtra",
+    "name": "Maharashtra",
+    "type": "State",
+    "region": "Western",
+    "capital": "Mumbai",
+    "total_area_mha": 30.77,
+    "degraded_area_mha": 14.33,
+    "degraded_pct": 46.57,
+    "trend_pct_change": 1.15,
+    "historical_pct": {
+      "2003_05": 44.82,
+      "2011_13": 45.42,
+      "2018_19": 46.57
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 28.12,
+        "area_mha": 8.65
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 14.2,
+        "area_mha": 4.37
+      },
+      {
+        "type": "Salinity / Sodic Soils",
+        "pct": 4.25,
+        "area_mha": 1.31
+      }
+    ],
+    "severity": "Very High",
+    "primary_causes": [
+      "Monoculture of water-intensive cash crops (sugarcane) in rain-shadow regions",
+      "Over-irrigation in heavy black cotton soils causing secondary salinization",
+      "Soil loss on undulating Deccan Plateau"
+    ],
+    "environmental_impact": "Severe groundwater table drawdown in Marathwada and Vidarbha; topsoil nutrient exhaustion; agrarian vulnerability.",
+    "prevention_measures": "Broad-bed furrow cultivation; continuous contour trenching (CCT); watershed treatment via ridge-to-valley approach; farm ponds; sub-surface drainage in canal commands.",
+    "active_schemes": [
+      "Jalyukt Shivar Abhiyan",
+      "PM Krishi Sinchayee Yojana (PMKSY-WDC)",
+      "Nanaji Deshmukh Krishi Sanjivani Prakalp (PoCRA)"
+    ],
+    "data_source": "ISRO Space Applications Centre (SAC) Desertification Atlas 2021",
+    "source_year": "2021 (Imagery cycle 2018-19)",
+    "methodology": "Multi-spectral IRS AWiFS & Landsat OLI classification, NRSC ground validation"
+  },
+  {
+    "id": "gujarat",
+    "name": "Gujarat",
+    "type": "State",
+    "region": "Western",
+    "capital": "Gandhinagar",
+    "total_area_mha": 19.6,
+    "degraded_area_mha": 10.3,
+    "degraded_pct": 52.55,
+    "trend_pct_change": 0.86,
+    "historical_pct": {
+      "2003_05": 51.1,
+      "2011_13": 51.69,
+      "2018_19": 52.55
+    },
+    "dominant_processes": [
+      {
+        "type": "Salinity / Alkalinity",
+        "pct": 21.4,
+        "area_mha": 4.19
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 17.5,
+        "area_mha": 3.43
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 9.15,
+        "area_mha": 1.79
+      },
+      {
+        "type": "Wind Erosion",
+        "pct": 4.5,
+        "area_mha": 0.89
+      }
+    ],
+    "severity": "Very High",
+    "primary_causes": [
+      "Seawater ingress along 1,600 km coastline",
+      "Hyper-saline conditions in Rann of Kachchh and Banni grasslands",
+      "Over-extraction of coastal aquifers"
+    ],
+    "environmental_impact": "Inland advance of salinity; destruction of native Banni grass taxa; freshwater well turning brackish.",
+    "prevention_measures": "Tidal regulators and bandharas along coastline; Prosopis juliflora eradication replaced with indigenous Salvadora and Acacia; halophyte plantation; laser land leveling.",
+    "active_schemes": [
+      "Sujalam Sufalam Jal Abhiyan",
+      "National Coastal Zone Management Programme",
+      "Integrated Coastal Zone Management (ICZM)"
+    ],
+    "data_source": "ISRO SAC Desertification & Land Degradation Atlas 2021",
+    "source_year": "2021 (Imagery cycle 2018-19)",
+    "methodology": "Remote sensing thermal/optical multi-temporal satellite data"
+  },
+  {
+    "id": "karnataka",
+    "name": "Karnataka",
+    "type": "State",
+    "region": "Southern",
+    "capital": "Bengaluru",
+    "total_area_mha": 19.18,
+    "degraded_area_mha": 7.1,
+    "degraded_pct": 37.02,
+    "trend_pct_change": 0.52,
+    "historical_pct": {
+      "2003_05": 36.1,
+      "2011_13": 36.5,
+      "2018_19": 37.02
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 24.1,
+        "area_mha": 4.62
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 10.4,
+        "area_mha": 1.99
+      },
+      {
+        "type": "Salinity / Sodic Soils",
+        "pct": 2.52,
+        "area_mha": 0.49
+      }
+    ],
+    "severity": "High",
+    "primary_causes": [
+      "Dryland drought vulnerability across northern Karnataka (Deccan trap)",
+      "Topsoil runoff during erratic monsoons",
+      "Canal command waterlogging and salinization in Tungabhadra and Upper Krishna basin"
+    ],
+    "environmental_impact": "Siltation of major reservoirs; severe summer moisture deficit; crop yield drop in semi-arid pulse belt.",
+    "prevention_measures": "Sujala watershed development models; contour bunding; horticulture integration with dryland crops (tamarind, amla); tank desilting.",
+    "active_schemes": [
+      "World Bank funded REWARD project",
+      "Sujala-III Watershed Project",
+      "Krishi Bhagya Scheme"
+    ],
+    "data_source": "ISRO SAC Atlas 2021 / Karnataka State Remote Sensing Applications Centre (KSRSAC)",
+    "source_year": "2021 (Imagery cycle 2018-19)",
+    "methodology": "IRS LISS-IV & AWiFS composite classification"
+  },
+  {
+    "id": "madhya-pradesh",
+    "name": "Madhya Pradesh",
+    "type": "State",
+    "region": "Central",
+    "capital": "Bhopal",
+    "total_area_mha": 30.82,
+    "degraded_area_mha": 4.88,
+    "degraded_pct": 15.83,
+    "trend_pct_change": 0.48,
+    "historical_pct": {
+      "2003_05": 15.1,
+      "2011_13": 15.35,
+      "2018_19": 15.83
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion (Gully / Ravine)",
+        "pct": 9.4,
+        "area_mha": 2.9
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 5.2,
+        "area_mha": 1.6
+      },
+      {
+        "type": "Mining Land Reclamation",
+        "pct": 1.23,
+        "area_mha": 0.38
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Severe gully erosion forming Chambal badlands / ravines",
+      "Deforestation on fragile forest fringes",
+      "Overgrazing and opencast coal/iron mining in Singrauli & Jabalpur"
+    ],
+    "environmental_impact": "Loss of agricultural acreage to advancing ravine heads; topsoil transport into Yamuna river system.",
+    "prevention_measures": "Ravine reclamation using bamboo plantation and vegetative check dams; aerial seeding of degraded forest patches; participatory forest management.",
+    "active_schemes": [
+      "Chambal Ravine Reclamation Project (with World Bank)",
+      "Rajiv Gandhi Watershed Management Mission",
+      "CAMPA afforestation"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "IRS AWiFS satellite analysis & Survey of India topographic sheets"
+  },
+  {
+    "id": "odisha",
+    "name": "Odisha",
+    "type": "State",
+    "region": "Eastern",
+    "capital": "Bhubaneswar",
+    "total_area_mha": 15.57,
+    "degraded_area_mha": 5.75,
+    "degraded_pct": 36.93,
+    "trend_pct_change": 1.02,
+    "historical_pct": {
+      "2003_05": 35.2,
+      "2011_13": 35.91,
+      "2018_19": 36.93
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 21.3,
+        "area_mha": 3.32
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 13.5,
+        "area_mha": 2.1
+      },
+      {
+        "type": "Mining & Industrial Land",
+        "pct": 2.13,
+        "area_mha": 0.33
+      }
+    ],
+    "severity": "High",
+    "primary_causes": [
+      "Shifting cultivation (Podu chasa) in southern tribal highlands",
+      "High-intensity coastal cyclones causing coastal erosion and sea surge",
+      "Extensive iron-ore, bauxite and chromite mining in Keonjhar and Sukinda"
+    ],
+    "environmental_impact": "Heavy metal runoff; mangrove loss along coastline; siltation of Chilika lagoon and Hirakud reservoir.",
+    "prevention_measures": "Transition from Podu to settled agroforestry (cashew, coffee, mango); mangrove belt restoration along Kendrapara coast; mine dump stabilization with geotextiles.",
+    "active_schemes": [
+      "Odisha Forestry Sector Development Project (OFSDP - JICA)",
+      "Integrated Coastal Zone Management",
+      "District Mineral Foundation (DMF) restoration"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / Odisha Space Applications Centre (ORSAC)",
+    "source_year": "2021",
+    "methodology": "High-resolution satellite mapping and ground truth calibration"
+  },
+  {
+    "id": "andhra-pradesh",
+    "name": "Andhra Pradesh",
+    "type": "State",
+    "region": "Southern",
+    "capital": "Amaravati",
+    "total_area_mha": 16.3,
+    "degraded_area_mha": 4.96,
+    "degraded_pct": 30.43,
+    "trend_pct_change": 0.38,
+    "historical_pct": {
+      "2003_05": 29.8,
+      "2011_13": 30.05,
+      "2018_19": 30.43
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 18.2,
+        "area_mha": 2.97
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 8.1,
+        "area_mha": 1.32
+      },
+      {
+        "type": "Salinity / Coastal Sodic",
+        "pct": 4.13,
+        "area_mha": 0.67
+      }
+    ],
+    "severity": "Moderate to High",
+    "primary_causes": [
+      "Aridity and recurring drought in Rayalaseema districts (Ananthapuramu)",
+      "Heavy topsoil sheet wash in Eastern Ghats",
+      "Coastal aquaculture runoff causing localized salinity"
+    ],
+    "environmental_impact": "Desertification risk in Ananthapuramu; groundwater depletion; loss of red soil top layer.",
+    "prevention_measures": "Andhra Pradesh Community-managed Natural Farming (APCNF); percolation tanks; bio-fencing and zero tillage practices.",
+    "active_schemes": [
+      "Andhra Pradesh Community-managed Natural Farming (APCNF)",
+      "YSR Rythu Bharosa",
+      "AP Drought Mitigation Project (APDMP)"
+    ],
+    "data_source": "ISRO SAC Atlas 2021 / APSAC",
+    "source_year": "2021",
+    "methodology": "IRS AWiFS LISS-III imagery, state ground inventory"
+  },
+  {
+    "id": "telangana",
+    "name": "Telangana",
+    "type": "State",
+    "region": "Southern",
+    "capital": "Hyderabad",
+    "total_area_mha": 11.21,
+    "degraded_area_mha": 3.51,
+    "degraded_pct": 31.31,
+    "trend_pct_change": 0.4,
+    "historical_pct": {
+      "2003_05": 30.4,
+      "2011_13": 30.91,
+      "2018_19": 31.31
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 19.5,
+        "area_mha": 2.19
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 9.8,
+        "area_mha": 1.1
+      },
+      {
+        "type": "Salinity",
+        "pct": 2.01,
+        "area_mha": 0.22
+      }
+    ],
+    "severity": "Moderate to High",
+    "primary_causes": [
+      "Dry deciduous scrub degradation in semi-arid zones",
+      "Monoculture of Bt cotton on rainfed red chalka soils",
+      "Over-reliance on borewell irrigation in granitic terrain"
+    ],
+    "environmental_impact": "Rapid groundwater table drawdown; localized soil hardening and crusting.",
+    "prevention_measures": "Massive revival of historic irrigation cascades (chain tanks); Telanganaku Haritha Haram mass afforestation; subsoiling to break hardpan.",
+    "active_schemes": [
+      "Mission Kakatiya",
+      "Telanganaku Haritha Haram",
+      "Rythu Bandhu with soil conditioning"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / TRAC Telangana",
+    "source_year": "2021",
+    "methodology": "Digital image processing of Sentinel-2 & IRS AWiFS"
+  },
+  {
+    "id": "uttar-pradesh",
+    "name": "Uttar Pradesh",
+    "type": "State",
+    "region": "Northern",
+    "capital": "Lucknow",
+    "total_area_mha": 24.09,
+    "degraded_area_mha": 4.7,
+    "degraded_pct": 19.51,
+    "trend_pct_change": -0.62,
+    "historical_pct": {
+      "2003_05": 20.8,
+      "2011_13": 20.13,
+      "2018_19": 19.51
+    },
+    "dominant_processes": [
+      {
+        "type": "Salinity / Alkalinity (Usar Land)",
+        "pct": 8.7,
+        "area_mha": 2.1
+      },
+      {
+        "type": "Water Erosion (Bundelkhand)",
+        "pct": 7.2,
+        "area_mha": 1.73
+      },
+      {
+        "type": "Waterlogging (Eastern UP)",
+        "pct": 3.61,
+        "area_mha": 0.87
+      }
+    ],
+    "severity": "Moderate (Significant Reclamation Progress)",
+    "primary_causes": [
+      "Geogenic sodium accumulation creating hard sodic Usar crusts in central alluvium",
+      "Flat gradient and poor canal drainage leading to waterlogging",
+      "Sheet and gully erosion in Bundelkhand rocky terrain"
+    ],
+    "environmental_impact": "Unproductive vast patches of white alkali land; seasonal inundation destroying Kharif crops in Terai belt.",
+    "prevention_measures": "Chemical reclamation with mineral gypsum and press-mud; salt-tolerant varieties (CSR 30 rice, KRL 210 wheat); drainage interceptors; Bundelkhand farm pond missions.",
+    "active_schemes": [
+      "UP Sodic Land Reclamation Project (UPSLRP III - World Bank)",
+      "Pandit Deen Dayal Upadhyay Kisan Samriddhi Yojana",
+      "Khet Talab Yojana Bundelkhand"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / Remote Sensing Applications Centre UP (RSAC-UP)",
+    "source_year": "2021",
+    "methodology": "IRS AWiFS satellite sensors + Ground sampling by CSSRI Karnal"
+  },
+  {
+    "id": "jharkhand",
+    "name": "Jharkhand",
+    "type": "State",
+    "region": "Eastern",
+    "capital": "Ranchi",
+    "total_area_mha": 7.97,
+    "degraded_area_mha": 5.5,
+    "degraded_pct": 69.01,
+    "trend_pct_change": 0.94,
+    "historical_pct": {
+      "2003_05": 67.2,
+      "2011_13": 68.07,
+      "2018_19": 69.01
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation",
+        "pct": 38.4,
+        "area_mha": 3.06
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 27.2,
+        "area_mha": 2.17
+      },
+      {
+        "type": "Mining & Quarrying Discard",
+        "pct": 3.41,
+        "area_mha": 0.27
+      }
+    ],
+    "severity": "Extreme (Highest % in Mainland India)",
+    "primary_causes": [
+      "Open-cast coal, iron, and mica mining leaving vast abandoned overburden dumps",
+      "Severe rill and sheet erosion on Chota Nagpur Plateau undulating slopes",
+      "Degradation of Sal (Shorea robusta) forests"
+    ],
+    "environmental_impact": "Acid mine drainage; flash runoff and rapid topsoil loss; drying of natural springs (dari/chuha).",
+    "prevention_measures": "Gradonies and staggered contour trenches on plateau slopes; biological reclamation of mine dumps using vetiver grass and leguminous tree species; 5% model farm ponds (Doba).",
+    "active_schemes": [
+      "Birsa Harit Gram Yojana",
+      "Jharkhand Integrated Horticultural Development",
+      "National Afforestation Programme (NAP)"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "AWiFS multi-date data validated by JSAC Ranchi"
+  },
+  {
+    "id": "bihar",
+    "name": "Bihar",
+    "type": "State",
+    "region": "Eastern",
+    "capital": "Patna",
+    "total_area_mha": 9.42,
+    "degraded_area_mha": 1.34,
+    "degraded_pct": 14.23,
+    "trend_pct_change": 0.21,
+    "historical_pct": {
+      "2003_05": 13.9,
+      "2011_13": 14.02,
+      "2018_19": 14.23
+    },
+    "dominant_processes": [
+      {
+        "type": "Waterlogging",
+        "pct": 7.6,
+        "area_mha": 0.72
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 4.8,
+        "area_mha": 0.45
+      },
+      {
+        "type": "Salinity / Alkalinity",
+        "pct": 1.83,
+        "area_mha": 0.17
+      }
+    ],
+    "severity": "Low to Moderate",
+    "primary_causes": [
+      "Recurring flood inundation in Kosi, Gandak and Bagmati river basins",
+      "Topsoil deposition of coarse unproductive flood sand",
+      "Water stagnation in saucer-shaped chaurs and tals"
+    ],
+    "environmental_impact": "Loss of prime cropland during monsoon; sand-casting rendering fields uncultivable for multiple seasons.",
+    "prevention_measures": "Drainage syphon construction; integration of aquaculture and fox nut (Makhana) in permanent wetlands; sand-casting reclamation by silt enrichment.",
+    "active_schemes": [
+      "Jal-Jeevan-Hariyali Campaign",
+      "Bihar Kosi Basin Development Project (World Bank)",
+      "Kisan Bagicha Yojana"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Optical & SAR (Sentinel-1) flood and waterlogging temporal mapping"
+  },
+  {
+    "id": "west-bengal",
+    "name": "West Bengal",
+    "type": "State",
+    "region": "Eastern",
+    "capital": "Kolkata",
+    "total_area_mha": 8.87,
+    "degraded_area_mha": 1.76,
+    "degraded_pct": 19.84,
+    "trend_pct_change": 0.45,
+    "historical_pct": {
+      "2003_05": 19.1,
+      "2011_13": 19.39,
+      "2018_19": 19.84
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion (Rarh region)",
+        "pct": 9.2,
+        "area_mha": 0.82
+      },
+      {
+        "type": "Salinity (Sundarbans coastal delta)",
+        "pct": 6.8,
+        "area_mha": 0.6
+      },
+      {
+        "type": "Waterlogging",
+        "pct": 3.84,
+        "area_mha": 0.34
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Cyclone breaches of coastal mud embankments flooding paddy fields with seawater",
+      "Lateritic soil erosion in Purulia and Bankura drylands",
+      "Riverbank collapse along Bhagirathi-Hooghly"
+    ],
+    "environmental_impact": "Acute soil salinity poisoning deltaic freshwater agriculture; mangrove habitat squeeze.",
+    "prevention_measures": "Geo-tube reinforced embankment construction; mangrove afforestation along tidal edges; salt-tolerant indigenous rice varieties (Pokkali, Hamilton).",
+    "active_schemes": [
+      "Sundarbans Mangrove Afforestation Mission",
+      "Usharmukti Watershed Project (in Western Districts)",
+      "Matir Srishti Scheme"
+    ],
+    "data_source": "ISRO SAC Atlas 2021 / West Bengal State Council of Science & Technology",
+    "source_year": "2021",
+    "methodology": "Remote sensing coastal and deltaic change detection"
+  },
+  {
+    "id": "tamil-nadu",
+    "name": "Tamil Nadu",
+    "type": "State",
+    "region": "Southern",
+    "capital": "Chennai",
+    "total_area_mha": 13.01,
+    "degraded_area_mha": 2.3,
+    "degraded_pct": 17.68,
+    "trend_pct_change": 0.28,
+    "historical_pct": {
+      "2003_05": 17.2,
+      "2011_13": 17.4,
+      "2018_19": 17.68
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 10.3,
+        "area_mha": 1.34
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 4.5,
+        "area_mha": 0.59
+      },
+      {
+        "type": "Salinity & Coastal Erosion",
+        "pct": 2.88,
+        "area_mha": 0.37
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Soil erosion in Nilgiris and Palani hills due to plantation slopes",
+      "Over-exploitation of hard-rock groundwater aquifers",
+      "Coastal salinity intrusion in Cauvery Delta"
+    ],
+    "environmental_impact": "Drop in soil moisture retention; hill landslides in tea estate slopes during torrential northeast monsoons.",
+    "prevention_measures": "Bench terracing on tea and coffee estates; check dam networks; community tank rehabilitation (Kudimaramath); Vetiver hedgerows for slope stabilization.",
+    "active_schemes": [
+      "Kudimaramath Scheme (Tank rehabilitation)",
+      "Tamil Nadu Irrigated Agriculture Modernization Project (TNIAMP)",
+      "Mission on Green Tamil Nadu"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Multi-spectral IRS AWiFS analysis"
+  },
+  {
+    "id": "punjab",
+    "name": "Punjab",
+    "type": "State",
+    "region": "Northern",
+    "capital": "Chandigarh",
+    "total_area_mha": 5.04,
+    "degraded_area_mha": 0.44,
+    "degraded_pct": 8.73,
+    "trend_pct_change": 0.31,
+    "historical_pct": {
+      "2003_05": 8.1,
+      "2011_13": 8.42,
+      "2018_19": 8.73
+    },
+    "dominant_processes": [
+      {
+        "type": "Waterlogging & Salinity (South-West Punjab)",
+        "pct": 4.8,
+        "area_mha": 0.24
+      },
+      {
+        "type": "Water Erosion (Kandi belt)",
+        "pct": 3.1,
+        "area_mha": 0.16
+      },
+      {
+        "type": "Soil Micronutrient Depletion",
+        "pct": 0.83,
+        "area_mha": 0.04
+      }
+    ],
+    "severity": "Low by Area, Critical by Agronomic Intensity",
+    "primary_causes": [
+      "Paddy-wheat mono-cropping rotation causing catastrophic groundwater drawdown and nutrient mining",
+      "Canal seepage and rising saline water table in Muktsar, Fazilka, and Bathinda",
+      "Intensive pesticide and chemical fertilizer application"
+    ],
+    "environmental_impact": "Subsurface soil compaction (hard plow pan); loss of microbial life; waterlogging rendering fertile farmland unproductive.",
+    "prevention_measures": "Direct Seeded Rice (DSR) technique; sub-surface drainage systems to flush out salts; crop diversification into maize, pulses and oilseeds; laser land leveling.",
+    "active_schemes": [
+      "Pani Bachao Paisa Kamao",
+      "Soil Health Card Scheme",
+      "Promotion of Agricultural Mechanization for In-Situ Management of Crop Residue"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / Punjab Remote Sensing Centre (PRSC)",
+    "source_year": "2021",
+    "methodology": "IRS LISS-III & LISS-IV geospatial time-series"
+  },
+  {
+    "id": "haryana",
+    "name": "Haryana",
+    "type": "State",
+    "region": "Northern",
+    "capital": "Chandigarh",
+    "total_area_mha": 4.42,
+    "degraded_area_mha": 0.58,
+    "degraded_pct": 13.12,
+    "trend_pct_change": -0.15,
+    "historical_pct": {
+      "2003_05": 13.5,
+      "2011_13": 13.27,
+      "2018_19": 13.12
+    },
+    "dominant_processes": [
+      {
+        "type": "Salinity / Alkalinity",
+        "pct": 6.8,
+        "area_mha": 0.3
+      },
+      {
+        "type": "Wind Erosion (Southern Belt)",
+        "pct": 4.2,
+        "area_mha": 0.19
+      },
+      {
+        "type": "Water Erosion / Shivalik foothill",
+        "pct": 2.12,
+        "area_mha": 0.09
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Inland basin geometry with no natural drainage outlet leading to rising saline water tables in Rohtak, Jhajjar, and Hisar",
+      "Wind drift along the Rajasthan border in Mahendragarh and Bhiwani",
+      "Intensive multi-cropping."
+    ],
+    "environmental_impact": "Crop root zone salinization; loss of soil structure; alkaline crust formation.",
+    "prevention_measures": "Sub-surface drainage (SSD) technology installed by ICAR-CSSRI; micro-sprinkler systems; solar water-lifting pumps; green manuring with Sesbania (Dhaincha).",
+    "active_schemes": [
+      "Mera Pani Meri Virasat Scheme",
+      "CSSRI Salinity Reclamation Program",
+      "Jal Shakti Abhiyan"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / HARSAC",
+    "source_year": "2021",
+    "methodology": "Remote sensing coupled with CSSRI soil profile survey data"
+  },
+  {
+    "id": "himachal-pradesh",
+    "name": "Himachal Pradesh",
+    "type": "State",
+    "region": "Northern",
+    "capital": "Shimla",
+    "total_area_mha": 5.57,
+    "degraded_area_mha": 2.41,
+    "degraded_pct": 43.27,
+    "trend_pct_change": 0.65,
+    "historical_pct": {
+      "2003_05": 42.1,
+      "2011_13": 42.62,
+      "2018_19": 43.27
+    },
+    "dominant_processes": [
+      {
+        "type": "Frost Shattering & Rocky Terrain",
+        "pct": 25.1,
+        "area_mha": 1.4
+      },
+      {
+        "type": "Water Erosion (Steep slope sheet/gully)",
+        "pct": 12.3,
+        "area_mha": 0.69
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 5.87,
+        "area_mha": 0.32
+      }
+    ],
+    "severity": "High (Mainly High-Altitude Geomorphic)",
+    "primary_causes": [
+      "Glacial retreat, permafrost thaw and freeze-thaw rock shattering in Lahaul-Spiti and Kinnaur",
+      "Cloudbursts and high-intensity rainfall triggering flash landslides",
+      "Road construction debris disposal on unstable slopes"
+    ],
+    "environmental_impact": "River course obstruction; debris torrents; loss of alpine meadow topsoil.",
+    "prevention_measures": "Bio-engineering slope stabilization using crib walls and native alder/poplar; check dam cascades; cold desert seabuckthorn (Hippophae rhamnoides) plantation.",
+    "active_schemes": [
+      "HP Forest Eco-systems Climate Proofing Project (KFW)",
+      "Integrated Development Project for Source Sustainability and Climate Resilient Rain-fed Agriculture",
+      "Seabuckthorn Cultivation Mission"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Cryospheric & high altitude multi-temporal satellite analysis"
+  },
+  {
+    "id": "uttarakhand",
+    "name": "Uttarakhand",
+    "type": "State",
+    "region": "Northern",
+    "capital": "Dehradun",
+    "total_area_mha": 5.35,
+    "degraded_area_mha": 1.7,
+    "degraded_pct": 31.78,
+    "trend_pct_change": 0.54,
+    "historical_pct": {
+      "2003_05": 30.8,
+      "2011_13": 31.24,
+      "2018_19": 31.78
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion & Landslides",
+        "pct": 18.2,
+        "area_mha": 0.97
+      },
+      {
+        "type": "Frost Shattering (Himalayan snowfields)",
+        "pct": 8.5,
+        "area_mha": 0.45
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 5.08,
+        "area_mha": 0.28
+      }
+    ],
+    "severity": "Moderate to High",
+    "primary_causes": [
+      "Tectonic fragility of the Main Central Thrust and Main Boundary Thrust",
+      "Heavy torrential monsoons causing gully formation and slope collapse",
+      "Forest fires during dry pre-monsoon months damaging ground litter"
+    ],
+    "environmental_impact": "Silt choked hydroelectric turbines in Alaknanda and Bhagirathi; highway blockages; drying of natural mountain springs (Dharas).",
+    "prevention_measures": "Springshed management (Dhara Vikas); check dam construction; geogrid slope revetment; Oak forest conservation for water retention.",
+    "active_schemes": [
+      "Uttarakhand Decentralized Watershed Development Project (Gramya)",
+      "Spring Shed Management Programme",
+      "CAMPA Watershed Works"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Optical multi-spectral & Cartosat DEM topographic terrain modeling"
+  },
+  {
+    "id": "jammu-and-kashmir",
+    "name": "Jammu & Kashmir",
+    "type": "Union Territory",
+    "region": "Northern",
+    "capital": "Srinagar / Jammu",
+    "total_area_mha": 4.22,
+    "degraded_area_mha": 1.42,
+    "degraded_pct": 33.65,
+    "trend_pct_change": 0.44,
+    "historical_pct": {
+      "2003_05": 32.8,
+      "2011_13": 33.21,
+      "2018_19": 33.65
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 19.4,
+        "area_mha": 0.82
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 9.2,
+        "area_mha": 0.39
+      },
+      {
+        "type": "Landslides & Ravines",
+        "pct": 5.05,
+        "area_mha": 0.21
+      }
+    ],
+    "severity": "Moderate to High",
+    "primary_causes": [
+      "Karewa sediment mining and slope excavation",
+      "Deforestation in Pir Panjal range",
+      "High-energy water runoff during spring snowmelt"
+    ],
+    "environmental_impact": "Siltation of Wular and Dal lakes; loss of saffron-growing fertile Karewa soils.",
+    "prevention_measures": "Strict moratorium on illegal Karewa mining; catchment afforestation; terraced orchard management.",
+    "active_schemes": [
+      "J&K Watershed Development Programme",
+      "Green J&K Drive",
+      "Wular Lake Conservation Action Plan"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "High-resolution satellite mapping"
+  },
+  {
+    "id": "ladakh",
+    "name": "Ladakh",
+    "type": "Union Territory",
+    "region": "Northern",
+    "capital": "Leh",
+    "total_area_mha": 5.91,
+    "degraded_area_mha": 4.25,
+    "degraded_pct": 71.91,
+    "trend_pct_change": 0.12,
+    "historical_pct": {
+      "2003_05": 71.6,
+      "2011_13": 71.79,
+      "2018_19": 71.91
+    },
+    "dominant_processes": [
+      {
+        "type": "Frost Shattering & Cold Desert Bare Soil",
+        "pct": 52.4,
+        "area_mha": 3.1
+      },
+      {
+        "type": "Wind Deflation",
+        "pct": 14.2,
+        "area_mha": 0.84
+      },
+      {
+        "type": "Glacial Lake Outburst / Moraine Wash",
+        "pct": 5.31,
+        "area_mha": 0.31
+      }
+    ],
+    "severity": "Extreme (Cold Arid Ecosystem)",
+    "primary_causes": [
+      "Extremely arid climate with annual precipitation < 100 mm",
+      "High solar ultraviolet radiation degrading organic matter",
+      "Rapid permafrost thaw due to warming climate"
+    ],
+    "environmental_impact": "Spring water scarcity for traditional agrarian villages; barren gravel moraines with no natural soil regeneration.",
+    "prevention_measures": "Artificial ice stupas / artificial glaciers for springtime irrigation meltwater; seabuckthorn planting along stream banks; trench composting.",
+    "active_schemes": [
+      "Ladakh Greenhouse Project",
+      "Mission Organic Development Initiative (MODI)",
+      "Cold Desert Afforestation Scheme"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Satellite cryospheric and geomorphic classification"
+  },
+  {
+    "id": "assam",
+    "name": "Assam",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Dispur",
+    "total_area_mha": 7.84,
+    "degraded_area_mha": 1.83,
+    "degraded_pct": 23.34,
+    "trend_pct_change": 0.58,
+    "historical_pct": {
+      "2003_05": 22.1,
+      "2011_13": 22.76,
+      "2018_19": 23.34
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion (Riverbank erosion / Gully)",
+        "pct": 13.8,
+        "area_mha": 1.08
+      },
+      {
+        "type": "Waterlogging",
+        "pct": 6.2,
+        "area_mha": 0.49
+      },
+      {
+        "type": "Vegetation Degradation",
+        "pct": 3.34,
+        "area_mha": 0.26
+      }
+    ],
+    "severity": "Moderate (Acute Riverine Erosion)",
+    "primary_causes": [
+      "Severe braided channel migration and riverbank erosion along the Brahmaputra and Barak rivers",
+      "Annual catastrophic monsoon flooding carrying coarse silt",
+      "Shifting cultivation on Karbi Anglong and Dima Hasao hill slopes"
+    ],
+    "environmental_impact": "Displacement of riverine island (Char) communities; permanent loss of fertile agricultural acreage into riverbed.",
+    "prevention_measures": "Porcupine and geotextile revetment along vulnerable river banks; vetiver bio-fencing on dykes; agroforestry on elevated platforms.",
+    "active_schemes": [
+      "Brahmaputra River Erosion Management Project",
+      "Chief Minister's Samagra Gramya Unnayan Yojana",
+      "Assam Project on Forest and Biodiversity Conservation (APFBC)"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / Assam Remote Sensing Application Centre (ARSAC)",
+    "source_year": "2021",
+    "methodology": "Satellite radar (RISAT-1/Sentinel-1) flood and multi-spectral erosion mapping"
+  },
+  {
+    "id": "nagaland",
+    "name": "Nagaland",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Kohima",
+    "total_area_mha": 1.66,
+    "degraded_area_mha": 0.78,
+    "degraded_pct": 46.99,
+    "trend_pct_change": 1.82,
+    "historical_pct": {
+      "2003_05": 43.1,
+      "2011_13": 45.17,
+      "2018_19": 46.99
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation (Jhum)",
+        "pct": 32.4,
+        "area_mha": 0.54
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 14.59,
+        "area_mha": 0.24
+      }
+    ],
+    "severity": "High",
+    "primary_causes": [
+      "Shortening of traditional Jhum (slash-and-burn) cycle from 15-20 years to 3-5 years due to population pressure",
+      "Steep slope deforestation causing massive topsoil runoff during monsoons."
+    ],
+    "environmental_impact": "Exhaustion of organic soil fertility; recurring village landslides; drying up of downhill headwaters.",
+    "prevention_measures": "Agro-forestry based settled farming with nitrogen-fixing Alder trees (Alnus nepalensis); terrace cultivation; Community Conserved Areas (CCAs).",
+    "active_schemes": [
+      "FOCUS Nagaland (IFAD assisted)",
+      "National Mission on Sustainable Agriculture (NMSA)",
+      "Community Forest Management Schemes"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "AWiFS multi-temporal jhum tracking"
+  },
+  {
+    "id": "mizoram",
+    "name": "Mizoram",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Aizawl",
+    "total_area_mha": 2.11,
+    "degraded_area_mha": 0.58,
+    "degraded_pct": 27.49,
+    "trend_pct_change": 0.72,
+    "historical_pct": {
+      "2003_05": 26.1,
+      "2011_13": 26.77,
+      "2018_19": 27.49
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation (Jhum)",
+        "pct": 18.2,
+        "area_mha": 0.38
+      },
+      {
+        "type": "Water Erosion on Slopes",
+        "pct": 9.29,
+        "area_mha": 0.2
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Shifting slash-and-burn cultivation on fragile shale and sandstone slopes",
+      "Bamboo gregarious flowering and subsequent soil exposure during die-back."
+    ],
+    "environmental_impact": "Accelerated hill-slope sheet wash; siltation of perennial river valleys.",
+    "prevention_measures": "New Land Use Policy (NLUP) promoting permanent horticulture (passion fruit, dragon fruit, rubber); contour bunding; community reserve forests.",
+    "active_schemes": [
+      "New Land Use Policy (NLUP) / SEDP",
+      "FOCUS Mizoram",
+      "Green India Mission"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / MIRSAC",
+    "source_year": "2021",
+    "methodology": "Satellite remote sensing terrain time-series"
+  },
+  {
+    "id": "meghalaya",
+    "name": "Meghalaya",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Shillong",
+    "total_area_mha": 2.24,
+    "degraded_area_mha": 0.49,
+    "degraded_pct": 21.88,
+    "trend_pct_change": 0.63,
+    "historical_pct": {
+      "2003_05": 20.6,
+      "2011_13": 21.25,
+      "2018_19": 21.88
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion",
+        "pct": 12.1,
+        "area_mha": 0.27
+      },
+      {
+        "type": "Mining Induced Degradation (Acid Mine Drainage)",
+        "pct": 5.4,
+        "area_mha": 0.12
+      },
+      {
+        "type": "Vegetation Loss",
+        "pct": 4.38,
+        "area_mha": 0.1
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Unscientific rat-hole coal and limestone mining releasing toxic acidic leachate",
+      "Intense rainfall (highest in the world at Mawsynram/Sohra) stripping exposed soil on deforested plateau slopes."
+    ],
+    "environmental_impact": "Acidification of rivers (Lukha river turning bright blue due to sulfate precipitates); barren limestone karst.",
+    "prevention_measures": "Phytoremediation with acid-tolerant reeds and biochar; strict regulation of artisanal mining; bamboo drip irrigation systems.",
+    "active_schemes": [
+      "Meghalaya Community Led Landscapes Management Project (CLLMP - World Bank)",
+      "CAMPA Mine Reclamation",
+      "State Water Policy Projects"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / NESAC Umiam",
+    "source_year": "2021",
+    "methodology": "NESAC satellite radiometric and hydrological analysis"
+  },
+  {
+    "id": "manipur",
+    "name": "Manipur",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Imphal",
+    "total_area_mha": 2.23,
+    "degraded_area_mha": 0.61,
+    "degraded_pct": 27.35,
+    "trend_pct_change": 0.45,
+    "historical_pct": {
+      "2003_05": 26.3,
+      "2011_13": 26.9,
+      "2018_19": 27.35
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation",
+        "pct": 17.5,
+        "area_mha": 0.39
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 9.85,
+        "area_mha": 0.22
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Shifting cultivation on hill districts (Churachandpur, Senapati)",
+      "Encroachment and silt accumulation in Loktak Lake catchment area."
+    ],
+    "environmental_impact": "Degradation of floating phumdis in Loktak Lake; soil nutrient depletion on ridge lands.",
+    "prevention_measures": "Catchment protection planting; terraced rice cultivation; settled agroforestry.",
+    "active_schemes": [
+      "Loktak Lake Catchment Conservation Plan",
+      "Integrated Watershed Management Programme",
+      "National Mission for Sustaining the Himalayan Ecosystem"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / MARSAC",
+    "source_year": "2021",
+    "methodology": "AWiFS optical multi-temporal mapping"
+  },
+  {
+    "id": "tripura",
+    "name": "Tripura",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Agartala",
+    "total_area_mha": 1.05,
+    "degraded_area_mha": 0.44,
+    "degraded_pct": 41.9,
+    "trend_pct_change": 0.85,
+    "historical_pct": {
+      "2003_05": 40.2,
+      "2011_13": 41.05,
+      "2018_19": 41.9
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation",
+        "pct": 26.8,
+        "area_mha": 0.28
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 15.1,
+        "area_mha": 0.16
+      }
+    ],
+    "severity": "High",
+    "primary_causes": [
+      "Intensive brick kiln topsoil excavation in valley floors",
+      "Rubber monoculture replacing diverse native tropical moist forests",
+      "Jhum cultivation on hill slopes."
+    ],
+    "environmental_impact": "Loss of humus-rich top layer; reduced groundwater recharge in porous sedimentary hills.",
+    "prevention_measures": "Agro-forestry with intercropping; systematic soil regeneration on abandoned brick fields; contour terracing.",
+    "active_schemes": [
+      "Indo-German Development Cooperation Project on Climate Change Adaptation in Tripura",
+      "Tripura JICA Forestry Project",
+      "Soil and Water Conservation Schemes"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "High-resolution satellite imagery"
+  },
+  {
+    "id": "arunachal-pradesh",
+    "name": "Arunachal Pradesh",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Itanagar",
+    "total_area_mha": 8.37,
+    "degraded_area_mha": 1.8,
+    "degraded_pct": 21.51,
+    "trend_pct_change": 0.32,
+    "historical_pct": {
+      "2003_05": 20.8,
+      "2011_13": 21.19,
+      "2018_19": 21.51
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion & Landslides",
+        "pct": 11.2,
+        "area_mha": 0.94
+      },
+      {
+        "type": "Frost Shattering & Cold Scree",
+        "pct": 6.8,
+        "area_mha": 0.57
+      },
+      {
+        "type": "Vegetation Loss",
+        "pct": 3.51,
+        "area_mha": 0.29
+      }
+    ],
+    "severity": "Low to Moderate",
+    "primary_causes": [
+      "Seismically active steep mountain slopes vulnerable to torrential downpours",
+      "Linear infrastructure cutting across sensitive geologies",
+      "Shifting cultivation in lower foothill valleys."
+    ],
+    "environmental_impact": "Flash floods; riverbed sedimentation; temporary damming of mountain tributaries by landslides.",
+    "prevention_measures": "Bio-turfing and hydroseeding on cut road slopes; community-based sacred grove conservation; sustainable cardamom agroforestry.",
+    "active_schemes": [
+      "National Adaptation Fund for Climate Change (NAFCC)",
+      "Integrated Watershed Management Project",
+      "Border Area Development Programme"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / NESAC",
+    "source_year": "2021",
+    "methodology": "Digital Elevation Model & multi-spectral remote sensing"
+  },
+  {
+    "id": "sikkim",
+    "name": "Sikkim",
+    "type": "State",
+    "region": "North-Eastern",
+    "capital": "Gangtok",
+    "total_area_mha": 0.71,
+    "degraded_area_mha": 0.08,
+    "degraded_pct": 11.27,
+    "trend_pct_change": 0.15,
+    "historical_pct": {
+      "2003_05": 10.9,
+      "2011_13": 11.12,
+      "2018_19": 11.27
+    },
+    "dominant_processes": [
+      {
+        "type": "Frost Shattering & Glacial Moraines",
+        "pct": 7.1,
+        "area_mha": 0.05
+      },
+      {
+        "type": "Water Erosion / Debris Flow",
+        "pct": 4.17,
+        "area_mha": 0.03
+      }
+    ],
+    "severity": "Low (Pioneer in 100% Organic Farming)",
+    "primary_causes": [
+      "High-energy Teesta river canyon runoff",
+      "Glacial lake expansion and moraine instability in North Sikkim."
+    ],
+    "environmental_impact": "Landslide vulnerability along arterial roads; glacial lake outburst risk.",
+    "prevention_measures": "Complete state-wide organic agriculture eliminating synthetic chemical inputs; Dhara Vikas spring rejuvenation; slope drainage chutes.",
+    "active_schemes": [
+      "Sikkim Organic Mission",
+      "Dhara Vikas Spring Shed Project",
+      "National Mission for Sustaining the Himalayan Ecosystem"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Satellite cryospheric & optical multi-temporal mapping"
+  },
+  {
+    "id": "chhattisgarh",
+    "name": "Chhattisgarh",
+    "type": "State",
+    "region": "Central",
+    "capital": "Raipur",
+    "total_area_mha": 13.52,
+    "degraded_area_mha": 4.2,
+    "degraded_pct": 31.07,
+    "trend_pct_change": 0.75,
+    "historical_pct": {
+      "2003_05": 29.8,
+      "2011_13": 30.32,
+      "2018_19": 31.07
+    },
+    "dominant_processes": [
+      {
+        "type": "Vegetation Degradation",
+        "pct": 17.8,
+        "area_mha": 2.41
+      },
+      {
+        "type": "Water Erosion",
+        "pct": 10.5,
+        "area_mha": 1.42
+      },
+      {
+        "type": "Mining Overburden Dumps",
+        "pct": 2.77,
+        "area_mha": 0.37
+      }
+    ],
+    "severity": "Moderate to High",
+    "primary_causes": [
+      "Extensive open-cast coal, iron, and bauxite mining in Korba, Dantewada, and Raigarh",
+      "Deforestation and forest fragmentation",
+      "Heavy runoff on degraded red and yellow lateritic soils."
+    ],
+    "environmental_impact": "Loss of biodiverse Sal and teak canopy; water table pollution by heavy mining particulates.",
+    "prevention_measures": "Compulsory compensatory afforestation; gully plugging using loose boulder structures; bio-fertilizer and compost promotion.",
+    "active_schemes": [
+      "Suraji Gaon Yojana (Narwa, Garuwa, Ghurwa, Bari)",
+      "CAMPA Mining Reclamation",
+      "Rajiv Gandhi Kisan Nyay Yojana"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / CGRSAC",
+    "source_year": "2021",
+    "methodology": "IRS AWiFS satellite classifications"
+  },
+  {
+    "id": "goa",
+    "name": "Goa",
+    "type": "State",
+    "region": "Western",
+    "capital": "Panaji",
+    "total_area_mha": 0.37,
+    "degraded_area_mha": 0.04,
+    "degraded_pct": 10.81,
+    "trend_pct_change": -0.22,
+    "historical_pct": {
+      "2003_05": 11.2,
+      "2011_13": 11.03,
+      "2018_19": 10.81
+    },
+    "dominant_processes": [
+      {
+        "type": "Mining Rejects & Quarrying",
+        "pct": 5.4,
+        "area_mha": 0.02
+      },
+      {
+        "type": "Water Erosion & Coastal Salinity",
+        "pct": 5.41,
+        "area_mha": 0.02
+      }
+    ],
+    "severity": "Low (Localized Mining and Coastal Impacts)",
+    "primary_causes": [
+      "Historical iron and manganese ore mine tailings along Zuari and Mandovi river basins",
+      "Coastal beach sand erosion due to sea wall construction and tourism footprints."
+    ],
+    "environmental_impact": "Red mud wash into estuarine Khazan lands; siltation of mangrove creeks.",
+    "prevention_measures": "Bio-stabilization of mine reject terraces with acacia and bamboo; revival of traditional Khazan dyke and sluice gate agriculture; coastal dune vegetation conservation.",
+    "active_schemes": [
+      "Khazan Agro-Ecosystem Revival Project",
+      "Integrated Coastal Zone Management",
+      "Goa State Biodiversity Board initiatives"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Remote sensing coastal and estuarine monitoring"
+  },
+  {
+    "id": "kerala",
+    "name": "Kerala",
+    "type": "State",
+    "region": "Southern",
+    "capital": "Thiruvananthapuram",
+    "total_area_mha": 3.89,
+    "degraded_area_mha": 0.4,
+    "degraded_pct": 10.28,
+    "trend_pct_change": 0.35,
+    "historical_pct": {
+      "2003_05": 9.7,
+      "2011_13": 9.93,
+      "2018_19": 10.28
+    },
+    "dominant_processes": [
+      {
+        "type": "Water Erosion (Western Ghats slopes)",
+        "pct": 6.8,
+        "area_mha": 0.26
+      },
+      {
+        "type": "Coastal Erosion & Salt Intrusion",
+        "pct": 2.4,
+        "area_mha": 0.09
+      },
+      {
+        "type": "Land-Use Conversion",
+        "pct": 1.08,
+        "area_mha": 0.05
+      }
+    ],
+    "severity": "Low by Area, Critical in Extreme Rainfall Events",
+    "primary_causes": [
+      "High-intensity monsoon downpours on steep modified slopes of the Western Ghats (Idukki, Wayanad)",
+      "Loss of natural wetlands (paddy puncha lands) to urban construction",
+      "Coastal wave erosion."
+    ],
+    "environmental_impact": "Devastating debris flows and landslides; saltwater intrusion in Kuttanad below-sea-level farming system.",
+    "prevention_measures": "Bio-terracing with Vetiver; conservation of Kuttanad below sea level heritage farming system; mangrove green wall restoration along coastal backwaters.",
+    "active_schemes": [
+      "Rebuild Kerala Initiative (RKI)",
+      "Subhiksha Keralam",
+      "Haritha Keralam Mission"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / Kerala State Remote Sensing and Environment Centre (KSREC)",
+    "source_year": "2021",
+    "methodology": "Multi-spectral satellite sensor data & high resolution topographic mapping"
+  },
+  {
+    "id": "nct-of-delhi",
+    "name": "NCT of Delhi",
+    "type": "Union Territory",
+    "region": "Northern",
+    "capital": "New Delhi",
+    "total_area_mha": 0.15,
+    "degraded_area_mha": 0.09,
+    "degraded_pct": 60.0,
+    "trend_pct_change": 2.1,
+    "historical_pct": {
+      "2003_05": 56.4,
+      "2011_13": 57.9,
+      "2018_19": 60.0
+    },
+    "dominant_processes": [
+      {
+        "type": "Urban Soil Sealing & Impervious Surface",
+        "pct": 42.0,
+        "area_mha": 0.063
+      },
+      {
+        "type": "Vegetation Loss on Aravalli Ridge",
+        "pct": 12.0,
+        "area_mha": 0.018
+      },
+      {
+        "type": "Soil Salinity & Industrial Contamination",
+        "pct": 6.0,
+        "area_mha": 0.009
+      }
+    ],
+    "severity": "High (Urban Anthropic Degradation)",
+    "primary_causes": [
+      "Rapid urban sprawl replacing fertile Yamuna alluvium with concrete and asphalt",
+      "Over-extraction of groundwater causing soil subsidence",
+      "Encroachment on the ecologically vital Aravalli Ridge."
+    ],
+    "environmental_impact": "Total loss of soil permeability and natural infiltration; urban heat island expansion; drying of city wetlands (Johads).",
+    "prevention_measures": "Mandatory rainwater harvesting injection wells in all urban buildings; development of biodiversity parks (Yamuna and Aravalli Biodiversity Parks); permeable pavement construction.",
+    "active_schemes": [
+      "Delhi Master Plan 2041 Green Buffers",
+      "Aravalli Biodiversity Park Initiative",
+      "Delhi Wetland Authority Waterbody Revival"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "High-resolution urban land use / land cover classification"
+  },
+  {
+    "id": "chandigarh",
+    "name": "Chandigarh",
+    "type": "Union Territory",
+    "region": "Northern",
+    "capital": "Chandigarh",
+    "total_area_mha": 0.011,
+    "degraded_area_mha": 0.002,
+    "degraded_pct": 18.18,
+    "trend_pct_change": 0.1,
+    "historical_pct": {
+      "2003_05": 17.8,
+      "2011_13": 18.08,
+      "2018_19": 18.18
+    },
+    "dominant_processes": [
+      {
+        "type": "Urban Soil Sealing",
+        "pct": 12.5,
+        "area_mha": 0.0014
+      },
+      {
+        "type": "Water Erosion (Sukhna Catchment)",
+        "pct": 5.68,
+        "area_mha": 0.0006
+      }
+    ],
+    "severity": "Low",
+    "primary_causes": [
+      "Urban footprint expansion",
+      "Soil siltation from degraded Shivalik hills into Sukhna Lake catchment."
+    ],
+    "environmental_impact": "Siltation of Sukhna Lake; localized urban runoff surges.",
+    "prevention_measures": "Catchment silt-retention dams in Sukhna Wildlife Sanctuary; strict urban green cover zoning.",
+    "active_schemes": [
+      "Sukhna Catchment Watershed Management",
+      "Chandigarh Greening Action Plan"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "High-resolution satellite mapping"
+  },
+  {
+    "id": "puducherry",
+    "name": "Puducherry",
+    "type": "Union Territory",
+    "region": "Southern",
+    "capital": "Puducherry",
+    "total_area_mha": 0.049,
+    "degraded_area_mha": 0.011,
+    "degraded_pct": 22.45,
+    "trend_pct_change": 0.4,
+    "historical_pct": {
+      "2003_05": 21.6,
+      "2011_13": 22.05,
+      "2018_19": 22.45
+    },
+    "dominant_processes": [
+      {
+        "type": "Coastal Salinity & Saltwater Ingress",
+        "pct": 14.2,
+        "area_mha": 0.007
+      },
+      {
+        "type": "Coastal Wave Erosion",
+        "pct": 8.25,
+        "area_mha": 0.004
+      }
+    ],
+    "severity": "Moderate (Coastal Vulnerability)",
+    "primary_causes": [
+      "Excessive pumping of groundwater in coastal aquifers leading to seawater intrusion",
+      "Disruption of longshore drift by harbour breakwaters."
+    ],
+    "environmental_impact": "Salinization of agricultural wells; severe beach erosion requiring artificial reef nourishment.",
+    "prevention_measures": "Submerged offshore reef construction; recharge shafts; micro-irrigation using treated wastewater.",
+    "active_schemes": [
+      "Puducherry Coastal Zone Management Plan",
+      "National Coastal Mission Projects"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Coastal remote sensing analysis"
+  },
+  {
+    "id": "dadra-and-nagar-haveli-and-daman-and-diu",
+    "name": "Dadra & Nagar Haveli and Daman & Diu",
+    "type": "Union Territory",
+    "region": "Western",
+    "capital": "Daman",
+    "total_area_mha": 0.06,
+    "degraded_area_mha": 0.021,
+    "degraded_pct": 35.0,
+    "trend_pct_change": 0.3,
+    "historical_pct": {
+      "2003_05": 34.2,
+      "2011_13": 34.7,
+      "2018_19": 35.0
+    },
+    "dominant_processes": [
+      {
+        "type": "Coastal Salinity & Tidal Inundation",
+        "pct": 21.0,
+        "area_mha": 0.013
+      },
+      {
+        "type": "Industrial Land Soil Alteration",
+        "pct": 14.0,
+        "area_mha": 0.008
+      }
+    ],
+    "severity": "Moderate",
+    "primary_causes": [
+      "Coastal proximity and tidal ingress in Daman and Diu",
+      "High industrial development density in Dadra & Nagar Haveli."
+    ],
+    "environmental_impact": "Salinization of low-lying soils; industrial chemical runoff vulnerability.",
+    "prevention_measures": "Mangrove restoration on tidal mudflats; industrial effluent monitoring; coastal bunding.",
+    "active_schemes": [
+      "Integrated Coastal Zone Management Plan",
+      "UT Green Action Plan"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "IRS AWiFS satellite classifications"
+  },
+  {
+    "id": "lakshadweep",
+    "name": "Lakshadweep",
+    "type": "Union Territory",
+    "region": "Southern / Island",
+    "capital": "Kavaratti",
+    "total_area_mha": 0.0032,
+    "degraded_area_mha": 0.0003,
+    "degraded_pct": 9.38,
+    "trend_pct_change": 0.6,
+    "historical_pct": {
+      "2003_05": 8.1,
+      "2011_13": 8.78,
+      "2018_19": 9.38
+    },
+    "dominant_processes": [
+      {
+        "type": "Coastal Wave Erosion",
+        "pct": 5.8,
+        "area_mha": 0.00019
+      },
+      {
+        "type": "Groundwater Salinization (Lens depletion)",
+        "pct": 3.58,
+        "area_mha": 0.00011
+      }
+    ],
+    "severity": "Fragile Coral Atoll Ecosystem",
+    "primary_causes": [
+      "Coral reef degradation weakening wave buffering",
+      "Very thin freshwater lens resting on seawater, easily depleted by motorized pumps."
+    ],
+    "environmental_impact": "Loss of narrow atoll landmass; salinization of coconut root zones and drinking water wells.",
+    "prevention_measures": "Bio-rock reef restoration; rainwater harvesting covering 100% of residential roofs; ban on coral mining.",
+    "active_schemes": [
+      "Island Coastal Regulation Zone (ICRZ) Plan",
+      "Lakshadweep Desalination and Water Security Project"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021 / National Centre for Sustainable Coastal Management (NCSCM)",
+    "source_year": "2021",
+    "methodology": "Very high resolution optical satellite mapping"
+  },
+  {
+    "id": "andaman-and-nicobar-islands",
+    "name": "Andaman & Nicobar Islands",
+    "type": "Union Territory",
+    "region": "Island / Bay of Bengal",
+    "capital": "Port Blair",
+    "total_area_mha": 0.825,
+    "degraded_area_mha": 0.082,
+    "degraded_pct": 9.94,
+    "trend_pct_change": 0.2,
+    "historical_pct": {
+      "2003_05": 9.5,
+      "2011_13": 9.74,
+      "2018_19": 9.94
+    },
+    "dominant_processes": [
+      {
+        "type": "Coastal Erosion & Sea Inundation",
+        "pct": 6.2,
+        "area_mha": 0.051
+      },
+      {
+        "type": "Water Erosion on Hilly Slopes",
+        "pct": 3.74,
+        "area_mha": 0.031
+      }
+    ],
+    "severity": "Low by Area, Ecologically Fragile",
+    "primary_causes": [
+      "Coseismic tectonic subsidence following 2004 megathrust earthquake submerging coastal land under high tides",
+      "Torrential tropical rainfall eroding cleared undulating slopes."
+    ],
+    "environmental_impact": "Permanent salt-killing of coastal mangrove belts and agricultural paddy lowlands; coral siltation.",
+    "prevention_measures": "Mangrove regeneration in inundated tidal zones; multi-tier coconut-spices agroforestry; contour bunding.",
+    "active_schemes": [
+      "Island Protection Zone (IPZ) Action Plan",
+      "Integrated Island Management Plan (IIMP)"
+    ],
+    "data_source": "ISRO SAC Desertification Atlas 2021",
+    "source_year": "2021",
+    "methodology": "Multi-spectral satellite mapping & coastal hydrographic surveys"
+  }
+]
